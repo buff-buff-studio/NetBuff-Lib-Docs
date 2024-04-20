@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Components - NetBuff</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../style.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Components";
+        var mkdocs_page_input_path = "components.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> NetBuff
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../getting_started/">Getting Started</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="./">Components</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#network-manager">Network Manager</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#network-identity">Network Identity</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#ownership">Ownership</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#finding-objects">Finding Objects</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#spawning-objects">Spawning Objects</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#activating-deactivating-objects">Activating / Deactivating Objects</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#despawning-objects">Despawning Objects</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#network-behaviour">Network Behaviour</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#network-transform">Network Transform</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#network-rigidbody-transform">Network Rigidbody Transform</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#network-animator">Network Animator</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#network-values">Network Values</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#listening-for-changes">Listening For Changes</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../custom_behaviours/">Creating Custom Behaviours</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../scene_management/">Managing Scenes</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../object_spawning/">Spawning Objects</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../reconnection_and_hot_reload/">Reconnection and Hot-Reload</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../custom_network_manager/">Custom Network Manager</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../network_testing/">Testing the Network</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">NetBuff</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Components</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="components">Components</h1>
+<p>The network component structure can be represented as the following image:</p>
+<p><img alt="Map" class="image" src="../img/components/map.png" /></p>
+<h2 id="network-manager">Network Manager</h2>
+<p>The NetworkManager is the network's main component. It's reponsible to start server, manage connectionsserver, manage objects and sync all the data across the network. Only one NetworkManager shall exist per game. You may create your own implementation of a NetworkManager child class, overriding callbacks to fit your needs.</p>
+<p>In the network manager you set the current transportation interface, the prefab registry scriptable and the player prefab. You can also set the default server ticking rate, used by NetworkTransforms and NetworkAnimators.</p>
+<p>For the debugging purposes you can use the Dump Ids button to create a file listing all the registered NetworkIdentities at a given time.</p>
+<p><img alt="Network Manager" class="image" src="../img/components/network_manager.png" /></p>
+<h2 id="network-identity">Network Identity</h2>
+<p>The NetworkIdentity is the component used by the network to keep object references across the network. Without the identifier the system can't assure that a object in a client view is the "same" object at the server environment. A NetworkIdentity does not contain any inspector fields, but shows the NetworkId for debugging purposes. The NetworkId is a 16-characters-long hex string (internally it's represented by two ints) that is used to keep the object reference across the network. </p>
+<p><img alt="Network Identity" class="image" src="../img/components/network_identity.png" /></p>
+<p>You can click at the <b>N</b> button to generate a new id for the object (don't do this if it's not necessary).</p>
+<h3 id="ownership">Ownership</h3>
+<p>Every NetworkIdentity is owned by someone. The field <b>NetworkIdentity.OwnerId</b> is a int that stores the ownership of an object. By default this value is set to -1 (Server Owned). Any other value than -1 represents the id of a client. You can use the bool property <b>NetworkIdentity.IsOwnedByClient</b> to check if a NetworkIdentity is owned by any client. You can use the bool property <b>NetworkIdentity.HasAuthority</b> to check if the NetworkIdentity is owned the local client / local server (if it's host/server).</p>
+<p>The authority controls who can, by default, modify the NetworkValues related to the NetworkIdentity and who can control the data/state across the network.</p>
+<p>When you spawn a NetworkIdentity via network you can choose who is the owner of that object. Additionally you can <b>NetworkIdentity.SetOwner</b> (if you have ownership) to transfer a object to another owner:</p>
+<pre><code class="language-csharp">if (!HasAuthority)
+    return;
+
+//Transfer the ownership back to the server
+if(Input.GetKeyDown(KeyCode.S))
+    SetOwner(-1);
+</code></pre>
+<h3 id="finding-objects">Finding Objects</h3>
+<p>There are many methods to locate NetworkIdentity objects. You can use <b>NetworkIdentity.GetNetworkObject</b> to find a NetworkIdentity using it's NetworkId. You can use <b>NetworkIdentity.GetNetworkObjectsOwnedBy</b> to find all the object owned by a given client.</p>
+<h3 id="spawning-objects">Spawning Objects</h3>
+<p>You can spawn new NetworkIdentity objects using the <b>NetworkIdentity.Spawn</b> method using a prefab. But, carefully, you need to register the prefab to the NetworkPrefabRegistry referenced by the NetworkManager:</p>
+<pre><code class="language-csharp">Spawn(shotPrefab, cameraTransform.position + cameraTransform.forward * 1, cameraTransform.rotation, Vector3.one * 0.5f, true);
+</code></pre>
+<p>When you spawn a object you can choose it's ownership and if the object is active or not. By default the OwnerId will be -1 (Server) and the object will be active.</p>
+<h3 id="activating-deactivating-objects">Activating / Deactivating Objects</h3>
+<p>You can also toggle the active state of an object. But, instead of using <b>GameObject.active</b> you must use <b>NetworkIdentity.SetActive</b> method. Only the owner of the object can toggle it's activeness, and it will be synced across the network:</p>
+<pre><code class="language-csharp">SetActive(false)
+</code></pre>
+<h3 id="despawning-objects">Despawning Objects</h3>
+<p>If you need to destroy a NetworkIdentity object you may not use <b>GameObject.Destroy</b>. Instead you need to use <b>NetworkIdentity.Despawn</b> to destroy the object across the network:</p>
+<pre><code class="language-csharp">Despawn(false)
+</code></pre>
+<h2 id="network-behaviour">Network Behaviour</h2>
+<p>The NetworkBehaviour class is the base class for all network components that are attached to NetworkIdentity objects. It requires the NetworkIdentity component and CAN'T be added / removed from a object at runtime. Almost all the logic of your project that requires network will be writen implementing this class.</p>
+<h3 id="network-transform">Network Transform</h3>
+<p>The NetworkTransform is one of the standard basic NetworkBehaviours. It's used to sync a object transform state. You can customize the rate and which fields will be sync across the network (saving data transfer rate):</p>
+<p><img alt="Network Transform" class="image" src="../img/components/network_transform.png" /></p>
+<p>You shall not change the <b>NetworkTransform.SyncMode</b> runtime. The thresholds determines when a transform should be re-synced or not. If the tick rate is set to -1, the NetworkManager tick rate will be used.</p>
+<h3 id="network-rigidbody-transform">Network Rigidbody Transform</h3>
+<p>The NetworkRigidbodyTransform works similiar to its base class NetworkTransform, but it also syncs the velocity and angular velocity fields. This component requires the Rigidbody component.</p>
+<p><img alt="Network Rigidbody Tansform" class="image" src="../img/components/network_rigidbody_transform.png" /></p>
+<p>You shall not change the <b>NetworkTransform.SyncMode</b> runtime. The thresholds determines when a transform should be re-synced or not. If the tick rate is set to -1, the NetworkManager tick rate will be used.</p>
+<h3 id="network-animator">Network Animator</h3>
+<p>The NetworkAnimator, as the name implies, is used to sync the state of an Animator. This component will sync parameters, layer weights and animation/transition timings:</p>
+<p><img alt="Network Animator" class="image" src="../img/components/network_animator.png" /></p>
+<p>You shall use the <b>NetworkAnimator.SetTrigger</b> instead of the <b>Animator.SetTrigger</b> cause triggers don't save any state, so the system cannot detect changes in them. All other parameter types will sync automatically.</p>
+<h2 id="network-values">Network Values</h2>
+<p>The first (and the most simple) way to customize your NetworkBehaviours is using NetworkValues. The list bellow shows all the supported value types. You can add support to your custom type as well, using serialization and deserialization.</p>
+<ul>
+<li>Bool</li>
+<li>Byte</li>
+<li>Int</li>
+<li>Float</li>
+<li>Double</li>
+<li>Long</li>
+<li>Short</li>
+<li>String</li>
+<li>Vector2</li>
+<li>Vector3</li>
+<li>Vector4</li>
+<li>Quaternion</li>
+<li>Color</li>
+<li>NetworkId</li>
+</ul>
+<pre><code class="language-csharp">public class CustomBehaviour : NetworkBehaviour
+{
+    //Only the NetworkIdentity owner can modify this value
+    public ColorNetworkValue color = new ColorNetworkValue(Color.white);
+    //Only the server can modifiy this value
+    public IntNetworkValue team = new IntNetworkValue(2, NetworkValue.ModifierType.Server);
+
+    private void OnEnable()
+    {
+        //Register values
+        WithValues(color, team);
+    }
+
+    private void Update()
+    {
+        if(!HasAuthority)
+            return;
+
+        if(Input.GetKeyDown(KeyCode.Space))
+            team.Value ++;   
+    }
+}
+</code></pre>
+<p>Network values will be shown yellow in the inspector. For testing purposes, any NetworkValue can be modified in the Inspector, even if you don't have permission do change it.</p>
+<p><img alt="Network Values" class="image" src="../img/components/network_values.png" /></p>
+<h3 id="listening-for-changes">Listening For Changes</h3>
+<p>The <b>NetworkValue&lt;&gt;</b> base class has an OnValueChanged callback that is called when the value is updated (locally or externally). It's very useful while creating reactive systems (like a player that changes the color if his team changes). You can see another usage bellow:</p>
+<pre><code class="language-csharp">public class PlayerController : NetworkBehaviour
+{
+    public StringNetworkValue nickname = new StringNetworkValue(&quot;&quot;);
+    public TMP_Text headPlate;
+
+    public void OnEnable()
+    {
+        WithValues(nickname);
+
+        nickname.OnValueChanged += (oldValue, newValue) =&gt;
+        {
+            headPlate.text = newValue;
+        };
+    } 
+
+}
+</code></pre>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../getting_started/" class="btn btn-neutral float-left" title="Getting Started"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../custom_behaviours/" class="btn btn-neutral float-right" title="Creating Custom Behaviours">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../getting_started/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../custom_behaviours/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

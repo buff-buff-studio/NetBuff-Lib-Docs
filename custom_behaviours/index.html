@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Creating Custom Behaviours - NetBuff</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../style.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Creating Custom Behaviours";
+        var mkdocs_page_input_path = "custom_behaviours.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> NetBuff
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../getting_started/">Getting Started</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../components/">Components</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="./">Creating Custom Behaviours</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#custom-serialization">Custom Serialization</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#custom-packets">Custom Packets</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#sending-packets">Sending Packets</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#packet-reliability">Packet Reliability</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#receiving-owned-packets">Receiving Owned Packets</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#receiving-not-owned-any-packets">Receiving Not Owned / Any Packets</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#network-callbacks">Network Callbacks</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../scene_management/">Managing Scenes</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../object_spawning/">Spawning Objects</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../reconnection_and_hot_reload/">Reconnection and Hot-Reload</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../custom_network_manager/">Custom Network Manager</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../network_testing/">Testing the Network</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">NetBuff</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Creating Custom Behaviours</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="creating-custom-behaviours">Creating Custom Behaviours</h1>
+<p>In the following sections you can find help on how to implement you own NetworkBehaviours, overriding its network callbacks. The basic structure of a NetworkBehaviour is shown bellow:</p>
+<pre><code class="language-csharp">public class CustomNetworkBehaviour : NetworkBehaviour
+{
+    //My Fields
+    public float walkSpeed = 3f;
+
+    //My Network Values
+    public IntNetworkValue team = new IntNetworkValue(0);
+
+    //Unity callbacks
+    public void OnEnable(){}
+
+    //Network callbacks
+    public override void OnSpawned(bool isRetroactive){}
+}
+</code></pre>
+<p>There's no special rules, it works exactly like a normal MonoBehaviour, while providing network communication/syncing and the power to change the behaviour of a NetworkIdentity object</p>
+<h2 id="custom-serialization">Custom Serialization</h2>
+<p>If your class has a complex (or even variable data structure) that is too complex to be synced via NetworkValues you can use the custom serialization system. All you need to do is using the interface <b>INetworkBehaviourSerializer</b>:</p>
+<pre><code class="language-csharp">public class CustomNetworkBehaviour : NetworkBehaviour, INetworkBehaviourSerializer
+{
+    public float[] valueTooComplex = new float[0];
+
+    public void OnSerialize(BinaryWriter writer, bool forceSendAll)
+    {
+        writer.Write(valueTooComplex.Length);
+        for (var i = 0; i &lt; valueTooComplex.Length; i++)
+        {
+            writer.Write(valueTooComplex[i]);
+        }   
+    }
+
+    public void OnDeserialize(BinaryReader reader)
+    {
+        var length = reader.ReadInt32();
+        valueTooComplex = new float[length];
+        for (var i = 0; i &lt; length; i++)
+        {
+            valueTooComplex[i] = reader.ReadSingle();
+        }
+    }
+}
+</code></pre>
+<p>Doing this, all the data will be synced through the network (even for late-joiners). If your data is too complex you can implement a system to only update the needed data, but when forceSendAll is true you need to write all the data to the writer. This value will be true when a late joiner is requesting all NetworkIdentities data. You can use <b>NetworkIdentity.MarkSerializerDirty</b> to call the OnSerialize method, so the OnSerialize (with forceSendAll = false) will be called again and the data will be synced, so the other network peers will use OnDeserialize to read the data.</p>
+<h2 id="custom-packets">Custom Packets</h2>
+<p>The third method to create custom data transfer / syncing is using packets. Internally, all the three methods end up using Packets to send data through the network, but you can create your custom own packets. The packet system was chosen was the main transfer method of <b class="netbuff">NetBuff</b> as packets are super fast, easy-to-use and lightweight while comparated to other solutions.</p>
+<p>To create a custom packet you need to create a new class that implements the IPacket or the IOwnedPacket interface:</p>
+<pre><code class="language-csharp">public class PlayerPunchActionPacket : IPacket
+{
+    public NetworkId Id { get; set; }
+
+    public void Serialize(BinaryWriter writer)
+    {
+        Id.Serialize(writer);
+    }
+
+    public void Deserialize(BinaryReader reader)
+    {
+        Id = NetworkId.Read(reader);
+    }
+}
+
+public class PacketBodyRotation : IOwnedPacket
+{
+    public NetworkId Id { get; set; }
+    public float BodyRotation { get; set; }
+
+    public void Serialize(BinaryWriter writer)
+    {
+        Id.Serialize(writer);
+        writer.Write(BodyRotation);
+    }
+
+    public void Deserialize(BinaryReader reader)
+    {
+        Id = NetworkId.Read(reader);
+        BodyRotation = reader.ReadSingle();
+    }
+}
+</code></pre>
+<p>A IOwnedPacket is a IPacket that is directly attached to a NetworkIdentity, so they will be sent internally by a NetworkBehaviour and the server will find the same NetworkBehaviour at the other network peers and call the receiving callback.</p>
+<p>A normal IPacket is not directly attached to anything, so they will just sent through the network and all the handling must be done manually.</p>
+<h3 id="sending-packets">Sending Packets</h3>
+<p>To send a packet you can use the SendPacket method that will automatically use the correct method to send the packet:</p>
+<pre><code class="language-csharp">var packet = new PacketBodyRotation
+{
+    Id = Id,
+    BodyRotation = body.localEulerAngles.y
+};
+SendPacket(packet);
+</code></pre>
+<p>Internally the SendPacket method uses the <b>NetworkBehaviour.ClientSendPacket</b> and <b>NetworkBehaviour.ServerBroadcastPacket</b> methods, so you can use them as well:</p>
+<pre><code class="language-csharp">if (IsOwnedByClient)
+    ClientSendPacket(packet, reliable); //Client sends a message to the server
+else
+    ServerBroadcastPacket(packet, reliable); //Server broadcast a message to all the clients
+</code></pre>
+<p>If you are on the server side you can use <b>NetworkBehaviour.ServerBroadcastPacketExceptFor</b> to broadcast a message to all the clients except one. This behaviour can be useful sometimes.</p>
+<h3 id="packet-reliability">Packet Reliability</h3>
+<p>When you use any of the packet sending methods you can set the argument of reliabity. When set to true the delivery method is reliable, supports larger packets with the cost of being a little slower. When the value is set to false there no realibity, packets are limited to small sizes but the delivery is blazing fast!</p>
+<p>NetworkValue syncing and any other important/instant action are made using reliable delivery, as they need to be guaranteed to delivered. NetworkTransform in the other side don't use the reliability delivery, as their state is almost constantly updated, so losing some packets will probably not cause an issue.</p>
+<p>The packet loss count can be seen using the NetworkManagerGUI. If the network connection quality is good you may not lose a single packet, but if you have network issues you may experience some packet loss. Choose wisely when the reliability is needed or not. Most of the time the reliable=true is the way to go.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Unreliable</th>
+<th>Reliable</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Speed</td>
+<td>Fast+</td>
+<td>Fast</td>
+</tr>
+<tr>
+<td>Max Size</td>
+<td>Small</td>
+<td>Large</td>
+</tr>
+<tr>
+<td>Order</td>
+<td>May be unordered</td>
+<td>The order will be kept</td>
+</tr>
+<tr>
+<td>Loss</td>
+<td>May be lost</td>
+<td>If lost they will be sent again</td>
+</tr>
+<tr>
+<td>usage Example</td>
+<td>NetworkTransform, high-freq update packets</td>
+<td>Actions, NetworkValues, etc...</td>
+</tr>
+</tbody>
+</table>
+<h3 id="receiving-owned-packets">Receiving Owned Packets</h3>
+<p>To receive IOwnedPackets we can use the <b>NetworkBehaviour.OnServerReceivePacket</b> and <b>NetworkBehaviour.OnClientReceivePacket</b> callbacks:</p>
+<pre><code class="language-csharp">public class PlayerController : NetworkBehaviour
+{
+    //Server received the packet, check the ownership (optional) than broadcasts it to everyone else than the origin client
+    public override void OnServerReceivePacket(IOwnedPacket packet, int clientId)
+    {
+        switch (packet)
+        {
+            case PacketBodyRotation data:
+                if(clientId == OwnerId)
+                    ServerBroadcastPacketExceptFor(data, clientId);
+                break;
+        }
+    }
+
+
+    //Client received the packet, then applied it to the transform itslf
+    public override void OnClientReceivePacket(IOwnedPacket packet)
+    {
+        switch (packet)
+        {
+            case PacketBodyRotation bodyRot:
+                transform.eulerAngles = new Vector3(0, bodyRot.BodyRotation, 0);
+                break;
+        }
+    }
+}
+</code></pre>
+<p>Only the object with the IOwnedPacket id will receive the callbacks, so you don't need to worry checking the id manually!</p>
+<h3 id="receiving-not-owned-any-packets">Receiving Not Owned / Any Packets</h3>
+<p>If a packet is not owned you can register a custom listener for it anywhere in the project. In the example bellow the Lever class is listening for PlayerPunchActionPacket, which is a packet that is sent by the PlayerController class:</p>
+<pre><code class="language-csharp">public class Lever : NetworkBehaviour
+{
+    public BoolNetworkValue isOn = new(false);
+    public float radius = 2f;
+
+    private void OnEnable()
+    {
+        WithValues(isOn);
+        GetPacketListener&lt;PlayerPunchActionPacket&gt;().OnServerReceive += OnPlayerPunch;
+        //GetPacketListener&lt;PlayerPunchActionPacket&gt;().OnClientReceive ...;
+    }
+
+    private void OnDisable()
+    {
+        GetPacketListener&lt;PlayerPunchActionPacket&gt;().OnServerReceive -= OnPlayerPunch;
+    }
+
+    private void OnPlayerPunch(PlayerPunchActionPacket obj, int client)
+    {
+        var o = GetNetworkObject(obj.Id);
+        var dist = Vector3.Distance(o.transform.position, transform.position);
+
+        if (dist &gt; radius)
+            return;
+
+        isOn.Value = !isOn.Value;
+    }
+}
+
+public class PlayerController : NetworkBehaviour
+{
+    private void Update()
+    {
+        if (!HasAuthority)
+            return;
+
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            SendPacket(new PlayerPunchActionPacket { Id = Id }, true);
+        }
+    }
+}
+</code></pre>
+<p>You can use the <b>NetworkBehaviour.GetPacketListener</b> to listen to IOwnedPackets as well.</p>
+<h2 id="network-callbacks">Network Callbacks</h2>
+<p>In the table bellow you can find a list of all the NetworkBehaviour class callbacks:</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Parameters</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>OnServerReceivePacket</td>
+<td>IOwnedPacket packet int clientId</td>
+<td>Called when the server side object receives an IOwnedPacket (Called on host as well)</td>
+</tr>
+<tr>
+<td>OnClientReceivePacket</td>
+<td>IOwnedPacket packet</td>
+<td>Called when the client side object receives and IOwnedPacket (Called on host as well)</td>
+</tr>
+<tr>
+<td>OnSpawned</td>
+<td>bool isRetroactive</td>
+<td>Called in the first frame that a NetworkIdentity object exists into the network. isRetroactive will be true for late-joiners syncing purposes</td>
+</tr>
+<tr>
+<td>OnSceneChanged</td>
+<td>int fromScene int toScene</td>
+<td>Called when the object is moved from one scene to another</td>
+</tr>
+<tr>
+<td>OnClientConnected</td>
+<td>int clientId</td>
+<td>Called when a client connect to the server (Called only on server)</td>
+</tr>
+<tr>
+<td>OnClientDisconnected</td>
+<td>int clientId</td>
+<td>Called when a client disconnect from the server (Called only on server)</td>
+</tr>
+<tr>
+<td>OnDespawned</td>
+<td></td>
+<td>Called when a NetworkIdentiy object is despawned</td>
+</tr>
+<tr>
+<td>OnActiveChanged</td>
+<td>bool active</td>
+<td>Called when the activeness of a NetworkIdentity object changes</td>
+</tr>
+<tr>
+<td>OnOwnershipChanged</td>
+<td>int oldOwner int newOwner</td>
+<td>Called when the ownership of a NetworkIdentity object changes</td>
+</tr>
+</tbody>
+</table>
+<p>You can use any Unity callback normally as a NetworkBehaviour is also a MonoBehaviour.</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../components/" class="btn btn-neutral float-left" title="Components"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../scene_management/" class="btn btn-neutral float-right" title="Managing Scenes">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../components/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../scene_management/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Getting Started - NetBuff</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../style.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Getting Started";
+        var mkdocs_page_input_path = "getting_started.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> NetBuff
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="./">Getting Started</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#package-installation">Package Installation</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#networking-setup">Networking Setup</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#network-manager">Network Manager</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#network-manager-gui">Network Manager GUI</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#udp-network-transport">UDP Network Transport</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#set-network-transport">Set Network Transport</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#creating-the-player-prefab">Creating the player prefab</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#creating-the-prefab-registry">Creating the prefab registry</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#done">Done!</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#simple-movement-test">Simple Movement Test</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../components/">Components</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../custom_behaviours/">Creating Custom Behaviours</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../scene_management/">Managing Scenes</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../object_spawning/">Spawning Objects</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../reconnection_and_hot_reload/">Reconnection and Hot-Reload</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../custom_network_manager/">Custom Network Manager</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../network_testing/">Testing the Network</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">NetBuff</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Getting Started</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="getting-started">Getting Started</h1>
+<p>In the following sections you can find help on how to setup a <b class="netlib">NetLib</b> project. We recommend using unity 2023.2 or a newer version.</p>
+<h2 id="package-installation">Package Installation</h2>
+<ol>
+<li>Go to Unity Package Manager Window -&gt; Package Manager</li>
+<li>Click the "+" button in the upper left corner of the window.</li>
+<li>Select the "Add package from git URL..." option.</li>
+<li>Paste the link below and click the "Add" button.</li>
+<li>Done! Now the package is already installed. You can download samples as well if you want</li>
+</ol>
+<pre><code class="language-ruby">https://github.com/buff-buff-studio/NetBuff-Lib.git#package
+</code></pre>
+<h2 id="networking-setup">Networking Setup</h2>
+<p>Create a empty scene to begin. We recommend using the Basic (Built-In) template:</p>
+<p><img alt="Create Scene" class="image" src="../img/getting_started/create_scene.png" /></p>
+<p>Now, create a new GameObject and add the following components:</p>
+<ul>
+<li>Network Manager</li>
+<li>Network Manager GUI</li>
+<li>UDP Network Transport</li>
+</ul>
+<p><img alt="Components" class="image" src="../img/getting_started/components.png" /></p>
+<h3 id="network-manager">Network Manager</h3>
+<p>The NetworkManager is the main network component. It manages conections, objects, packets and everything else network-related, being an unique component in the network structure.</p>
+<h3 id="network-manager-gui">Network Manager GUI</h3>
+<p>The NetworkManagerGUI is a temporary component used for testing purposes. It creates a menu where you can manage the network connection, find all the servers on the network and to see network stats</p>
+<h3 id="udp-network-transport">UDP Network Transport</h3>
+<p>The UDPNetworkTransport is the basic transport, used to establish server-client connections over internet</p>
+<h3 id="set-network-transport">Set Network Transport</h3>
+<p>Now we need to set the network transport at the network manager. Just drag and drop the transport into the manager transport field:</p>
+<p><img alt="Set Transport" class="image" src="../img/getting_started/set_transport.png" /></p>
+<h3 id="creating-the-player-prefab">Creating the player prefab</h3>
+<p>If you start the game and try to host a server you will see an error in console. By default we need to provide a player prefab to the NetworkManager to spawn the player object. Following the steps bellow we can create a simple player prefab:</p>
+<ol>
+<li>Create a new capsule</li>
+<li>Add a NetworkTransform component</li>
+<li>Drop it as a prefab at the Project View</li>
+<li>Delete it from the scene</li>
+</ol>
+<h3 id="creating-the-prefab-registry">Creating the prefab registry</h3>
+<p>Now you are one step away from the success! Even if you set the player prefab, all the network ends must know what the prefab the server is trying to spawn, so we need to setup our NetworkPrefabRegistry first.</p>
+<ol>
+<li>Create a new NetworkPrefabRegistry in the left click menu of the Project Folder</li>
+<li>Add the prefab to the registry list (Create at the + button to add a new slot to the registry)</li>
+<li>Click on N button to generate a new id</li>
+<li>Set it in the registry field of the NetworkManager</li>
+<li>Set the player prefab in the player prefab field of the NetworkManager</li>
+</ol>
+<p><img alt="Setup Finish" class="image" src="../img/getting_started/setup_finish.png" /></p>
+<h3 id="done">Done!</h3>
+<p>Now we are done! You can hit the play button and then click in <b>Start Host</b> to start the host (Client + Server)</p>
+<p><img alt="Server Running" class="image" src="../img/getting_started/server_running.png" /></p>
+<h2 id="simple-movement-test">Simple Movement Test</h2>
+<p>Creating a simple script we can test our server. You can use the code bellow or create your own logic!</p>
+<pre><code class="language-csharp">using NetBuff.Components;
+using UnityEngine;
+
+namespace Samples.Docs
+{
+    public class BasicMovement : NetworkBehaviour
+    {
+        private void Update()
+        {
+            if (!HasAuthority)
+                return;
+
+            var move = new Vector3(Input.GetAxis(&quot;Horizontal&quot;), 0, Input.GetAxis(&quot;Vertical&quot;));
+            transform.position += move * Time.deltaTime * 3;
+        }
+    }
+}
+</code></pre>
+<p>Add it to player and run the game again! You can even build and join the server as client because your multiplayer game is already working!</p>
+<p><img alt="Movement Test" class="image" src="../img/getting_started/movement_test.png" /></p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href=".." class="btn btn-neutral float-left" title="Home"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../components/" class="btn btn-neutral float-right" title="Components">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href=".." style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../components/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

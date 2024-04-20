@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Custom Network Manager - NetBuff</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../style.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Custom Network Manager";
+        var mkdocs_page_input_path = "custom_network_manager.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> NetBuff
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../getting_started/">Getting Started</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../components/">Components</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../custom_behaviours/">Creating Custom Behaviours</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../scene_management/">Managing Scenes</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../object_spawning/">Spawning Objects</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../reconnection_and_hot_reload/">Reconnection and Hot-Reload</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="./">Custom Network Manager</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#callbacks">Callbacks</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../network_testing/">Testing the Network</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">NetBuff</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Custom Network Manager</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="custom-network-manager">Custom Network Manager</h1>
+<p>Sometimes the default network manager implementation may not fullfil all your needs. We recommend you to create your own implementation of the NetworkManager to fit your project needs. In the following example theres a custom NetworkManager implementation where we override the <b>NetworkManager.OnSpawnPlayer</b> method to fit our probject (Solis) needs:</p>
+<pre><code class="language-csharp">public class SolisNetworkManager : NetworkManager
+{
+    public GameObject robotPrefab;
+    public Transform robotSpawnPoint;
+    public Transform humanSpawnPoint;
+
+    private void Awake()
+    {
+        if (Instance == this || Instance == null) DontDestroyOnLoad(this.gameObject);
+        else Destroy(this.gameObject);
+    }
+
+    protected override void OnSpawnPlayer(int clientId)
+    {  
+        var prefab = clientId == 0 ? playerPrefab : robotPrefab;
+        var t = clientId == 0 ? humanSpawnPoint : robotSpawnPoint;
+        Assert.IsTrue(prefabRegistry.IsPrefabValid(prefab), &quot;Player prefab is not valid&quot;);
+        SpawnNetworkObjectForClients(prefabRegistry.GetPrefabId(prefab), t.position, t.rotation, t.localScale, clientId);
+    }
+}
+</code></pre>
+<h2 id="callbacks">Callbacks</h2>
+<p>In the list bellow you can find all the methods that you can customize to fit your project:</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Parameters</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>OnServerStart</td>
+<td></td>
+<td>Called when the server stats (Server Only)</td>
+</tr>
+<tr>
+<td>OnServerStop</td>
+<td></td>
+<td>Called when the server stops (Server Only)</td>
+</tr>
+<tr>
+<td>OnNetworkObjectSpawned</td>
+<td>NetworkIdentity identity bool retroactive</td>
+<td>Called when a NetworkIdentity object spawns</td>
+</tr>
+<tr>
+<td>OnNetworkObjectDespawned</td>
+<td>NetworkIdentity identity</td>
+<td>Called right before a NetworkIdentity object despawn</td>
+</tr>
+<tr>
+<td>OnClientConnected</td>
+<td>int clientId</td>
+<td>Called when a client joins the server (Server Only)</td>
+</tr>
+<tr>
+<td>OnClientDisconnected</td>
+<td>int clientId string reason</td>
+<td>Called when a client leaves the server (Server Only)</td>
+</tr>
+<tr>
+<td>OnSpawnPlayer</td>
+<td>int clientId</td>
+<td>Called by the server when a client joins to spawn the player object (Server Only)</td>
+</tr>
+<tr>
+<td>OnConnect</td>
+<td></td>
+<td>Called when the client joins the server (Client Only)</td>
+</tr>
+<tr>
+<td>OnDisconnect</td>
+<td>string reason</td>
+<td>Called when the client leaves the server (Client Only)</td>
+</tr>
+<tr>
+<td>OnServerReceivePacket</td>
+<td>int clientId IPacket packet</td>
+<td>Called when the server receives a packet (Server Only)</td>
+</tr>
+<tr>
+<td>OnClientReceivePacket</td>
+<td>IPacket packet</td>
+<td>Called when the client receives a packet (Client Only)</td>
+</tr>
+<tr>
+<td>OnClearEnvironment</td>
+<td></td>
+<td>Called after the server stop / client disconnection to clear the main scene to it's initial state</td>
+</tr>
+</tbody>
+</table>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../reconnection_and_hot_reload/" class="btn btn-neutral float-left" title="Reconnection and Hot-Reload"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../network_testing/" class="btn btn-neutral float-right" title="Testing the Network">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../reconnection_and_hot_reload/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../network_testing/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Managing Scenes - NetBuff</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../style.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Managing Scenes";
+        var mkdocs_page_input_path = "scene_management.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> NetBuff
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../getting_started/">Getting Started</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../components/">Components</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../custom_behaviours/">Creating Custom Behaviours</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="./">Managing Scenes</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#scene-id-rules">Scene Id Rules</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#loading-and-unloading-scenes">Loading and Unloading Scenes</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#moving-objects-between-scenes">Moving Objects Between Scenes</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#main-scene">Main Scene</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../object_spawning/">Spawning Objects</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../reconnection_and_hot_reload/">Reconnection and Hot-Reload</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../custom_network_manager/">Custom Network Manager</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../network_testing/">Testing the Network</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">NetBuff</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Managing Scenes</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="managing-scenes">Managing Scenes</h1>
+<p><b class="netbuff">NetBuff</b> supports loading/unloading scenes in runtime, allowing the system to provide level loading/unloading flow control and other scene-based control flow. Every single NetworkIdentity object has the field <b>NetworkIdentity.SceneId</b> that represents in which network loaded scene the object is:</p>
+<pre><code class="language-csharp">public int SceneId;
+</code></pre>
+<h2 id="scene-id-rules">Scene Id Rules</h2>
+<p>The scene where your NetworkManager is located is considered the main scene, as the networking process will always start from there. The main scene will always have the id of 0.</p>
+<p>Everyother scene will have the id linked to its position if the <b>NetworkManager.LoadedScenes</b> list</p>
+<ol>
+<li>You start the network</li>
+<li>You load the scene "Test1.unity". It'll have the id 1</li>
+<li>You load the scene "Test2.unity". It'll have the id 2</li>
+<li>You unload the scene "Test1.unity"</li>
+<li>Now the scene Test2 becomes the scene 1, cause it's linked to loaded scenes list</li>
+</ol>
+<p>You can always use the scene id -1 to spawn or move objects around. This id represents the <b>NetworkManager.LastLoadedScene</b> (the scene in the last position of the loaded scenes list). If no additional scene is loaded it will point to the main scene.</p>
+<h2 id="loading-and-unloading-scenes">Loading and Unloading Scenes</h2>
+<p>Only the server can load and unload scenes, but anyone can check if a scene is loaded and which scenes are loaded right now. The <b>NetworkIdentity.SceneId</b> will be synced between every network end and every other scene-related method/property will work in any end as well.</p>
+<p>You can load / unload scenes using the <b>NetworkManager.LoadScene</b> and <b>NetworkManager.UnloadScene</b> methods:</p>
+<pre><code class="language-csharp">public class SceneLoadingController : NetworkBehaviour
+{
+    public string scene1 = &quot;Scene1&quot;;
+
+    public void Update()
+    {
+        if (IsServer)
+        {
+            if (Input.GetKeyDown(KeyCode.Alpha1))
+            {
+                //Checks if the scene is already loaded
+                if (NetworkManager.Instance.IsSceneLoaded(scene1))
+                    //Unloads the scene
+                    NetworkManager.Instance.UnloadScene(scene1);
+                else
+                    //Loads the scene
+                    NetworkManager.Instance.LoadScene(scene1);
+            }
+        }
+    }
+}
+</code></pre>
+<p>When you unload a scene all the NetworkIdentity objects in it will be despawned with no issues. If a late-joiner enters the game, every single object in every single scene will be synced with no problems as well. </p>
+<h2 id="moving-objects-between-scenes">Moving Objects Between Scenes</h2>
+<p>If you have the ownership over a NetworkIdentity object, you can move it between scenes easily, using the <b>NetworkIdentity.MoveToScene</b> method:</p>
+<pre><code class="language-csharp">public void Update()
+{
+    if(!HasAuthority)
+        return;
+
+    if (Input.GetKeyDown(KeyCode.M))
+    {
+        var id = SceneId + 1;
+        if (id &gt;= LoadedSceneCount)
+            id = 0;
+        //Moves the object to the next loaded scene
+        MoveToScene(id);
+    }
+}
+</code></pre>
+<h2 id="main-scene">Main Scene</h2>
+<p>The main scene is the scene where your NetworkManager is. It can't be unloaded and is the scene where player prefabs spawns by default. We heavily recommend that you leave the players and anything scene-persistent on the main scene, like singletons, controllers, etc...</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../custom_behaviours/" class="btn btn-neutral float-left" title="Creating Custom Behaviours"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../object_spawning/" class="btn btn-neutral float-right" title="Spawning Objects">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../custom_behaviours/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../object_spawning/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
