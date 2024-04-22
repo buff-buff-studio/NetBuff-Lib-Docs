@@ -9,13 +9,13 @@
       
       
       
-        <link rel="prev" href="../custom_network_manager/">
+        <link rel="prev" href="../managing_sessions/">
       
       
         <link rel="next" href="../reconnection_and_hot_reload/">
       
       
-      <link rel="icon" href="../assets/images/favicon.png">
+      <link rel="icon" href="../img/favicon.png">
       <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.18">
     
     
@@ -356,6 +356,26 @@
       
   
   
+  
+  
+    <li class="md-nav__item">
+      <a href="../managing_sessions/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Managing Sessions
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
     
   
   
@@ -477,26 +497,6 @@
   
   
     <li class="md-nav__item">
-      <a href="../api_reference/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    API Reference
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../samples/" class="md-nav__link">
         
   
@@ -522,6 +522,26 @@
   
   <span class="md-ellipsis">
     Common Troubleshooting
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api_reference/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    API Reference
   </span>
   
 
@@ -590,12 +610,12 @@
 
 
 <h1 id="server-discoverer">Server Discoverer</h1>
-<p>The server discovery system helps clients find available servers to join. The server discoverer will return a <a class="api-docs">GameInfo</a> for each of the servers found.</p>
+<p>The server discovery system helps clients find available servers to join. The server discoverer will return a <a class="api-docs">ServerInfo</a> for each of the servers found.</p>
 <h2 id="password-check-and-magic-number">Password Check and Magic Number</h2>
 <p>The server owner can protect the game using a password, set in the <a class="api-docs">NetworkTransport</a>. When a client requests to join the server, the password must be provided (the transport should perform the verification, as the <a class="api-docs">UDPNetworkTransport</a> does).</p>
 <p>The magic number is a unique number for each project, defined in <a class="api-docs">NetworkManager.VersionMagicNumber</a>. You can change it whenever you want to make a version incompatible with others. When a client requests to join the server, the magic number must be provided (the transport should perform the verification, as the <a class="api-docs">UDPNetworkTransport</a> does).</p>
 <h2 id="udp-server-discoverer">UDP Server Discoverer</h2>
-<p>The <a class="api-docs">UDPServerDiscoverer</a> is a class used to find all available servers across all your networks. This method will call a callback whenever it finds a new server, returning a <a class="api-docs">UDPGameInfo</a> containing the remote server's IP address along with the standard <a class="api-docs">GameInfo</a> fields.</p>
+<p>The <a class="api-docs">UDPServerDiscoverer</a> is a class used to find all available servers across all your networks. This method will call a callback whenever it finds a new server, returning a <a class="api-docs">UDPServerInfo</a> containing the remote server's IP address along with the standard <a class="api-docs">ServerInfo</a> fields.</p>
 <div class="language-csharp highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
