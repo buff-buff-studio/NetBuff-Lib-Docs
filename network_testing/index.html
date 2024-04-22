@@ -9,8 +9,10 @@
       
       
       
-        <link rel="prev" href="../custom_network_manager/">
+        <link rel="prev" href="../reconnection_and_hot_reload/">
       
+      
+        <link rel="next" href="../api_reference/">
       
       
       <link rel="icon" href="../assets/images/favicon.png">
@@ -257,6 +259,26 @@
   
   
     <li class="md-nav__item">
+      <a href="../transports/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Network Transport
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../custom_behaviours/" class="md-nav__link">
         
   
@@ -281,7 +303,7 @@
         
   
   <span class="md-ellipsis">
-    Managing Scenes
+    Scene Management
   </span>
   
 
@@ -317,11 +339,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../reconnection_and_hot_reload/" class="md-nav__link">
+      <a href="../custom_network_manager/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Reconnection and Hot-Reload
+    Custom Network Manager
   </span>
   
 
@@ -337,11 +359,31 @@
   
   
     <li class="md-nav__item">
-      <a href="../custom_network_manager/" class="md-nav__link">
+      <a href="../discoverer/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Custom Network Manager
+    Server Discoverer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reconnection_and_hot_reload/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Reconnection and Hot-Reload
   </span>
   
 
@@ -380,6 +422,66 @@
   
 
     
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api_reference/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    API Reference
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../samples/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Samples
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../troubleshooting/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Common Troubleshooting
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
   </ul>
 </nav>
                   </div>
@@ -414,11 +516,14 @@
 
 
 <h1 id="testing-the-network">Testing the Network</h1>
-<p>We commeding using the package <a href="https://docs-multiplayer.unity3d.com/mppm/current/about/" target="_blank">Multiplayer Player Mode</a> to test your game in the editor with no need to generate a build every single time. If you want you can also just generate a build and run it as well. With the hot-reload system you can edit your code in real time and your server state will be kept with no problems, so you can tweak values or test / debug systems without the needing of rebuilding your project every single time.</p>
-<p>The default <b class="netbuff">NetBuff</b> transport method is UDP. Using the UDPNetworkTransport you can test your game connecting multiples clients (editors and builds) with just one click!</p>
-<p>We recommend using the <a href="https://jagt.github.io/clumsy/" target="_blank">Clumsy</a> to simulate lag and packet loss between your network connections to see where your projects need more optimization / clean up. Clumsy is a free tool that can simulate lag, packet drops, out of order delivery and much more:</p>
-<p><img alt="Clumsy" class="image" src="../img/testing/clumsy.png" /></p>
-<p>Using the out of order / packet drop feature you can check if some your packets that is been sent in a unreliable way should be changed to the reliable method and to check if there's any issue in the network state syncing.</p>
+<p>We recommend using the <a href="https://docs-multiplayer.unity3d.com/mppm/current/about/" target="_blank">Multiplayer Player Mode</a> package to test your game in the editor without the need to build each time. Alternatively, you can simply build and run your project. With the fast reload system, you can edit your code in real-time, and your server's state will be maintained seamlessly, allowing you to adjust values or test/debug systems without the need to rebuild your project every time.</p>
+<p>The default transport method of <b class="netbuff">NetBuff</b> is UDP. By using the <a class="api-docs">UDPNetworkTransport</a>, you can test your game by connecting multiple clients (editors and builds) with just one click!</p>
+<p>We recommend using <a href="https://jagt.github.io/clumsy/" target="_blank">Clumsy</a> to simulate delays and packet loss between your network connections to see where your projects need more optimization/cleanup. Clumsy is a free tool that can simulate delays, packet loss, out-of-order delivery, and more:</p>
+<p><img alt="Clumsy" class="image" src="../img/network_testing/clumsy.png" /></p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>By using the out-of-order delivery/packet loss feature, you can check if some of your packets being sent unreliably should be changed to the reliable method and check for any issues in network state synchronization.</p>
+</div>
 
 
 
@@ -469,6 +574,8 @@
     
     
       <script src="../assets/javascripts/bundle.3220b9d7.min.js"></script>
+      
+        <script src="../js/auto_link.js"></script>
       
     
   </body>

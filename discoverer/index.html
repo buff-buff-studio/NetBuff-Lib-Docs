@@ -9,10 +9,10 @@
       
       
       
-        <link rel="prev" href="../discoverer/">
+        <link rel="prev" href="../custom_network_manager/">
       
       
-        <link rel="next" href="../network_testing/">
+        <link rel="next" href="../reconnection_and_hot_reload/">
       
       
       <link rel="icon" href="../assets/images/favicon.png">
@@ -20,7 +20,7 @@
     
     
       
-        <title>Reconnection and Hot-Reload - NetBuff</title>
+        <title>Server Discoverer - NetBuff</title>
       
     
     
@@ -72,7 +72,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#reconnection-and-hot-reload" class="md-skip">
+        <a href="#server-discoverer" class="md-skip">
           Skip to content
         </a>
       
@@ -107,7 +107,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Reconnection and Hot-Reload
+              Server Discoverer
             
           </span>
         </div>
@@ -356,26 +356,6 @@
       
   
   
-  
-  
-    <li class="md-nav__item">
-      <a href="../discoverer/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Server Discoverer
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
     
   
   
@@ -388,7 +368,76 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Server Discoverer
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Server Discoverer
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#password-check-and-magic-number" class="md-nav__link">
+    <span class="md-ellipsis">
+      Password Check and Magic Number
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#udp-server-discoverer" class="md-nav__link">
+    <span class="md-ellipsis">
+      UDP Server Discoverer
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reconnection_and_hot_reload/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -397,7 +446,6 @@
   
 
       </a>
-      
     </li>
   
 
@@ -502,6 +550,32 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#password-check-and-magic-number" class="md-nav__link">
+    <span class="md-ellipsis">
+      Password Check and Magic Number
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#udp-server-discoverer" class="md-nav__link">
+    <span class="md-ellipsis">
+      UDP Server Discoverer
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -515,18 +589,37 @@
                   
 
 
-<h1 id="reconnection-and-hot-reload">Reconnection and Hot-Reload</h1>
-<p><b class="netbuff">NetBuff</b> supports mid/end-game connections seamlessly: Each <a class="api-docs">NetworkIdentity</a> from every scene will be synchronized, maintaining its values and additional serialized data. Even in the editor, you can edit the code, recompile the project, and the server will seamlessly maintain its state (clients will need to reconnect, but even their player objects will be kept in the same state without data loss).</p>
-<p>To keep the system running, you must ensure that the object state values are synchronized over the network, either using <a href="/api_reference#networkvalue">NetworkValues</a> or utilizing callbacks from the <a class="api-docs">INetworkBehaviourSerializer</a> interface. If you need additional synchronization, you can also request a custom package in the <a class="api-docs">NetworkBehaviour.OnSpawned</a> callback, using the <strong>isRetroactive</strong> parameter to check if it's a late synchronization or not.</p>
-<div class="admonition tip">
-<p class="admonition-title">Tip</p>
-<p>We strongly recommend that after every significant modification/addition to the system, developers perform the following checks:</p>
-<ol>
-<li>Hot-Reload functionality still works with your system.</li>
-<li>Players who connect mid/end-game do not encounter issues synchronizing the state of your game.</li>
-</ol>
-<p>These two checks ensure you won't have network state synchronization problems, and every client/player will be able to synchronize the game state seamlessly. Hot-Reload isn't necessary but can expedite network testing (in addition to demonstrating the application of best practices), as you can modify the code and <a href="/api_reference#networkvalue">NetworkValues</a> via the inspector without losing the current server state.</p>
-</div>
+<h1 id="server-discoverer">Server Discoverer</h1>
+<p>The server discovery system helps clients find available servers to join. The server discoverer will return a <a class="api-docs">GameInfo</a> for each of the servers found.</p>
+<h2 id="password-check-and-magic-number">Password Check and Magic Number</h2>
+<p>The server owner can protect the game using a password, set in the <a class="api-docs">NetworkTransport</a>. When a client requests to join the server, the password must be provided (the transport should perform the verification, as the <a class="api-docs">UDPNetworkTransport</a> does).</p>
+<p>The magic number is a unique number for each project, defined in <a class="api-docs">NetworkManager.VersionMagicNumber</a>. You can change it whenever you want to make a version incompatible with others. When a client requests to join the server, the magic number must be provided (the transport should perform the verification, as the <a class="api-docs">UDPNetworkTransport</a> does).</p>
+<h2 id="udp-server-discoverer">UDP Server Discoverer</h2>
+<p>The <a class="api-docs">UDPServerDiscoverer</a> is a class used to find all available servers across all your networks. This method will call a callback whenever it finds a new server, returning a <a class="api-docs">UDPGameInfo</a> containing the remote server's IP address along with the standard <a class="api-docs">GameInfo</a> fields.</p>
+<div class="language-csharp highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-1"><span class="kt">var</span><span class="w"> </span><span class="n">discoverer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">UDPServerDiscoverer</span><span class="p">(</span><span class="n">NetworkManager</span><span class="p">.</span><span class="n">Instance</span><span class="p">.</span><span class="n">versionMagicNumber</span><span class="p">,</span><span class="w"> </span><span class="n">udp</span><span class="p">.</span><span class="n">port</span><span class="p">);</span>
+</span><span id="__span-0-2"><span class="n">discoverer</span><span class="p">.</span><span class="n">Search</span><span class="p">((</span><span class="n">info</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span>
+</span><span id="__span-0-3"><span class="p">{</span>
+</span><span id="__span-0-4"><span class="w">    </span><span class="n">list</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">info</span><span class="p">);</span>
+</span><span id="__span-0-5"><span class="w">    </span><span class="n">_serverList</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">list</span><span class="p">.</span><span class="n">ToArray</span><span class="p">();</span>
+</span><span id="__span-0-6"><span class="p">},</span><span class="w"> </span>
+</span><span id="__span-0-7"><span class="p">()</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span>
+</span><span id="__span-0-8"><span class="p">{</span><span class="w"> </span>
+</span><span id="__span-0-9"><span class="w">    </span><span class="n">Debug</span><span class="p">.</span><span class="n">Log</span><span class="p">(</span><span class="s">&quot;Done!&quot;</span><span class="p">);</span>
+</span><span id="__span-0-10"><span class="p">});</span>
+</span><span id="__span-0-11">
+</span><span id="__span-0-12"><span class="c1">//discoverer.Cancel();</span>
+</span></code></pre></div></td></tr></table></div>
 
 
 

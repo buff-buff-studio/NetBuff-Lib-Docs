@@ -12,7 +12,7 @@
         <link rel="prev" href="../scene_management/">
       
       
-        <link rel="next" href="../reconnection_and_hot_reload/">
+        <link rel="next" href="../custom_network_manager/">
       
       
       <link rel="icon" href="../assets/images/favicon.png">
@@ -259,6 +259,26 @@
   
   
     <li class="md-nav__item">
+      <a href="../transports/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Network Transport
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../custom_behaviours/" class="md-nav__link">
         
   
@@ -283,7 +303,7 @@
         
   
   <span class="md-ellipsis">
-    Managing Scenes
+    Scene Management
   </span>
   
 
@@ -368,26 +388,6 @@
   
   
     <li class="md-nav__item">
-      <a href="../reconnection_and_hot_reload/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Reconnection and Hot-Reload
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../custom_network_manager/" class="md-nav__link">
         
   
@@ -408,11 +408,111 @@
   
   
     <li class="md-nav__item">
+      <a href="../discoverer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Server Discoverer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reconnection_and_hot_reload/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Reconnection and Hot-Reload
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../network_testing/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
     Testing the Network
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api_reference/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    API Reference
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../samples/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Samples
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../troubleshooting/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Common Troubleshooting
   </span>
   
 
@@ -472,8 +572,8 @@
 
 
 <h1 id="spawning-objects">Spawning Objects</h1>
-<p>There are two types of NetworkIdentity objects: pre-existing and realtime-spawned. Using the field <b>NetworkIdentity.PrefabId</b> you can check if a object is pre-existing or not. If the PrefabId is empty the object was not spawned in real time. Otherwise the PrefabId will store the NetworkId of the prefab used to create that object. It's very important for the server to know how to recreate the server state when a late-joiner joins the server.</p>
-<p>You can spawn NetworkObjects using the <b>NetworkIdentity.SpawnObject</b> static method:</p>
+<p>There are two types of <a class="api-docs">NetworkIdentity</a> objects: pre-existing and dynamically spawned. Using the <a class="api-docs">NetworkIdentity.PrefabId</a> field, you can check whether an object is pre-existing or not. If the PrefabId is empty, the object hasn't been dynamically spawned. Otherwise, the PrefabId will store the <a class="api-docs">NetworkId</a> of the prefab used to create that object. It's crucial for the server to know how to recreate the server state when a player connects later on.</p>
+<p>You can spawn a <a class="api-docs">NetworkObject</a> using the static method <a class="api-docs">NetworkIdentity.Spawn</a>:</p>
 <p><div class="language-csharp highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -482,10 +582,10 @@
 </span><span id="__span-0-3"><span class="w">    </span><span class="n">Spawn</span><span class="p">(</span><span class="n">shotPrefab</span><span class="p">,</span><span class="w"> </span><span class="n">cameraTransform</span><span class="p">.</span><span class="n">position</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">cameraTransform</span><span class="p">.</span><span class="n">forward</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="n">cameraTransform</span><span class="p">.</span><span class="n">rotation</span><span class="p">,</span><span class="w"> </span><span class="n">Vector3</span><span class="p">.</span><span class="n">one</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="m">0.5f</span><span class="p">,</span><span class="w"> </span><span class="k">true</span><span class="p">);</span>
 </span><span id="__span-0-4"><span class="p">}</span>
 </span></code></pre></div></td></tr></table></div>
-And done! With one line of code your game object is spawned all across the network. Just remember to check if your prefab is registered into the NetworkPacketRegistry. You can also use the <b>NetBuff/Check Prefab Registries</b> if there's any problem with your registries:</p>
+And there you go! With one line of code, your game object is spawned across the network. Just remember to ensure that your prefab is registered in the <a class="api-docs">NetworkPrefabRegistry</a>. You can also use the <b>NetBuff/Check Prefab Registries</b> if there are any issues with your registries:</p>
 <p><img alt="Menu Option" class="image" src="../img/object_spawning/menu_option.png" /></p>
 <h2 id="spawning-parameters">Spawning Parameters</h2>
-<p>In the list bellow you can find all the parameters you can set in a NetworkIdentity object spawning:</p>
+<p>Below is a list of all the parameters you can set on a <a class="api-docs">NetworkIdentity</a> object spawn:</p>
 <table>
 <thead>
 <tr>
@@ -503,31 +603,35 @@ And done! With one line of code your game object is spawned all across the netwo
 <tr>
 <td>Position</td>
 <td>Vector3</td>
-<td>Object world position</td>
+<td>Position of the object in the world</td>
 </tr>
 <tr>
 <td>Rotation</td>
 <td>Quaternion</td>
-<td>Object world rotation</td>
+<td>Rotation of the object in the world</td>
 </tr>
 <tr>
 <td>Scale</td>
 <td>Vector3</td>
-<td>Object scale</td>
+<td>Scale of the object</td>
 </tr>
 <tr>
 <td>Active</td>
 <td>bool</td>
-<td>Object activeness state</td>
+<td>Object's activity state</td>
 </tr>
 <tr>
-<td>Scene</td>
+<td>SceneId</td>
 <td>int</td>
-<td>Represents the target scene id. Default is -1 (Last Loaded Scene)</td>
+<td>Represents the destination scene id. Default is -1 (Last loaded scene)</td>
 </tr>
 </tbody>
 </table>
-<p>The scene id is the only complex one. By default it's set to -1, so the NetworkIdentity object will spawn in the current last loaded scene. If the value is set to any other value it will be set to the correspondent loaded scene. The scene id 0 will always point to the main scene, where the NetworkManager is located.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The scene id is the only complex parameter. By default, it's set to -1, so the <a class="api-docs">NetworkIdentity</a> object will be spawned in the currently last loaded scene. If the value is set to any other value, it will be set to the corresponding loaded scene. Scene id 0 always points to the main scene where the <a class="api-docs">NetworkManager</a> is located.</p>
+<p>Refer to the <a href="/scene_management">Scene Management</a> page for more information on the scene system.</p>
+</div>
 
 
 
@@ -578,6 +682,8 @@ And done! With one line of code your game object is spawned all across the netwo
     
     
       <script src="../assets/javascripts/bundle.3220b9d7.min.js"></script>
+      
+        <script src="../js/auto_link.js"></script>
       
     
   </body>

@@ -9,10 +9,10 @@
       
       
       
-        <link rel="prev" href="../object_spawning/">
+        <link rel="prev" href="../components/">
       
       
-        <link rel="next" href="../discoverer/">
+        <link rel="next" href="../custom_behaviours/">
       
       
       <link rel="icon" href="../assets/images/favicon.png">
@@ -20,7 +20,7 @@
     
     
       
-        <title>Custom Network Manager - NetBuff</title>
+        <title>Network Transport - NetBuff</title>
       
     
     
@@ -72,7 +72,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#custom-network-manager" class="md-skip">
+        <a href="#network-transport" class="md-skip">
           Skip to content
         </a>
       
@@ -107,7 +107,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Custom Network Manager
+              Network Transport
             
           </span>
         </div>
@@ -256,10 +256,30 @@
       
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../transports/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Network Transport
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -268,6 +288,44 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#local" class="md-nav__link">
+    <span class="md-ellipsis">
+      Local
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#udp" class="md-nav__link">
+    <span class="md-ellipsis">
+      UDP
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -336,30 +394,10 @@
       
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    Custom Network Manager
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../custom_network_manager/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -368,35 +406,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#network-callbacks" class="md-nav__link">
-    <span class="md-ellipsis">
-      Network Callbacks
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -548,9 +557,18 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#network-callbacks" class="md-nav__link">
+  <a href="#local" class="md-nav__link">
     <span class="md-ellipsis">
-      Network Callbacks
+      Local
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#udp" class="md-nav__link">
+    <span class="md-ellipsis">
+      UDP
     </span>
   </a>
   
@@ -571,8 +589,8 @@
                   
 
 
-<h1 id="custom-network-manager">Custom Network Manager</h1>
-<p>Sometimes, the default implementation of the network manager may not meet all your needs. We recommend creating your own implementation of the <a class="api-docs">NetworkManager</a> to fit your project's requirements. In the following example, there's a custom implementation of the <a class="api-docs">NetworkManager</a> where we override the <a class="api-docs">NetworkManager.OnSpawnPlayer</a> method to meet the needs of our project (Solis):</p>
+<h1 id="network-transport">Network Transport</h1>
+<p>The <a class="api-docs">NetworkTransport</a> is a base class used to define how communication between network endpoints will be handled. You can implement your own transport to support any kind of connection protocol you desire, such as Bluetooth, etc...</p>
 <div class="language-csharp highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -592,32 +610,48 @@
 <span class="normal">17</span>
 <span class="normal">18</span>
 <span class="normal">19</span>
-<span class="normal">20</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-1"><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">SolisNetworkManager</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">NetworkManager</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-1"><span class="k">public</span><span class="w"> </span><span class="k">abstract</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">NetworkTransport</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">MonoBehaviour</span>
 </span><span id="__span-0-2"><span class="p">{</span>
-</span><span id="__span-0-3"><span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="n">GameObject</span><span class="w"> </span><span class="n">robotPrefab</span><span class="p">;</span>
-</span><span id="__span-0-4"><span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="n">Transform</span><span class="w"> </span><span class="n">robotSpawnPoint</span><span class="p">;</span>
-</span><span id="__span-0-5"><span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="n">Transform</span><span class="w"> </span><span class="n">humanSpawnPoint</span><span class="p">;</span>
-</span><span id="__span-0-6">
-</span><span id="__span-0-7"><span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">Awake</span><span class="p">()</span>
-</span><span id="__span-0-8"><span class="w">    </span><span class="p">{</span>
-</span><span id="__span-0-9"><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">Instance</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="k">this</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">Instance</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="k">null</span><span class="p">)</span><span class="w"> </span><span class="n">DontDestroyOnLoad</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="n">gameObject</span><span class="p">);</span>
-</span><span id="__span-0-10"><span class="w">        </span><span class="k">else</span><span class="w"> </span><span class="nf">Destroy</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="n">gameObject</span><span class="p">);</span>
-</span><span id="__span-0-11"><span class="w">    </span><span class="p">}</span>
-</span><span id="__span-0-12">
-</span><span id="__span-0-13"><span class="w">    </span><span class="k">protected</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">OnSpawnPlayer</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">clientId</span><span class="p">)</span>
-</span><span id="__span-0-14"><span class="w">    </span><span class="p">{</span><span class="w">  </span>
-</span><span id="__span-0-15"><span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">prefab</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">clientId</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="n">playerPrefab</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">robotPrefab</span><span class="p">;</span>
-</span><span id="__span-0-16"><span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">clientId</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="n">humanSpawnPoint</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">robotSpawnPoint</span><span class="p">;</span>
-</span><span id="__span-0-17"><span class="w">        </span><span class="n">Assert</span><span class="p">.</span><span class="n">IsTrue</span><span class="p">(</span><span class="n">prefabRegistry</span><span class="p">.</span><span class="n">IsPrefabValid</span><span class="p">(</span><span class="n">prefab</span><span class="p">),</span><span class="w"> </span><span class="s">&quot;Player prefab is not valid&quot;</span><span class="p">);</span>
-</span><span id="__span-0-18"><span class="w">        </span><span class="n">SpawnNetworkObjectForClients</span><span class="p">(</span><span class="n">prefabRegistry</span><span class="p">.</span><span class="n">GetPrefabId</span><span class="p">(</span><span class="n">prefab</span><span class="p">),</span><span class="w"> </span><span class="n">t</span><span class="p">.</span><span class="n">position</span><span class="p">,</span><span class="w"> </span><span class="n">t</span><span class="p">.</span><span class="n">rotation</span><span class="p">,</span><span class="w"> </span><span class="n">t</span><span class="p">.</span><span class="n">localScale</span><span class="p">,</span><span class="w"> </span><span class="n">clientId</span><span class="p">);</span>
-</span><span id="__span-0-19"><span class="w">    </span><span class="p">}</span>
-</span><span id="__span-0-20"><span class="p">}</span>
+</span><span id="__span-0-3"><span class="w">    </span><span class="cp">#region ManagementMethods</span>
+</span><span id="__span-0-4"><span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">abstract</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">StartHost</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">magicNumber</span><span class="p">);</span>
+</span><span id="__span-0-5"><span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">abstract</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">StartServer</span><span class="p">();</span>
+</span><span id="__span-0-6"><span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">abstract</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">StartClient</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">magicNumber</span><span class="p">);</span>
+</span><span id="__span-0-7"><span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">abstract</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">Close</span><span class="p">();</span>
+</span><span id="__span-0-8"><span class="w">    </span><span class="cp">#endregion</span>
+</span><span id="__span-0-9">
+</span><span id="__span-0-10"><span class="w">    </span><span class="cp">#region Client Methods</span>
+</span><span id="__span-0-11"><span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">abstract</span><span class="w"> </span><span class="n">IClientConnectionInfo</span><span class="w"> </span><span class="nf">GetClientInfo</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">id</span><span class="p">);</span>
+</span><span id="__span-0-12"><span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">abstract</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">GetClientCount</span><span class="p">();</span>
+</span><span id="__span-0-13"><span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">abstract</span><span class="w"> </span><span class="n">IEnumerable</span><span class="o">&lt;</span><span class="n">IClientConnectionInfo</span><span class="o">&gt;</span><span class="w"> </span><span class="n">GetClients</span><span class="p">();</span>
+</span><span id="__span-0-14"><span class="w">    </span><span class="cp">#endregion</span>
+</span><span id="__span-0-15">
+</span><span id="__span-0-16"><span class="w">    </span><span class="cp">#region Lifecycle</span>
+</span><span id="__span-0-17"><span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">abstract</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">ClientDisconnect</span><span class="p">(</span><span class="kt">string</span><span class="w"> </span><span class="n">reason</span><span class="p">);</span>
+</span><span id="__span-0-18"><span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">abstract</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">ServerDisconnect</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="n">reason</span><span class="p">);</span>
+</span><span id="__span-0-19"><span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">abstract</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">SendClientPacket</span><span class="p">(</span><span class="n">IPacket</span><span class="w"> </span><span class="n">packet</span><span class="p">,</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">reliable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">false</span><span class="p">);</span>
+</span><span id="__span-0-20"><span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">abstract</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">SendServerPacket</span><span class="p">(</span><span class="n">IPacket</span><span class="w"> </span><span class="n">packet</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">target</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">-</span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">reliable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">false</span><span class="p">);</span>
+</span><span id="__span-0-21">
+</span><span id="__span-0-22"><span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">BroadcastServerPacket</span><span class="p">(</span><span class="n">IPacket</span><span class="w"> </span><span class="n">packet</span><span class="p">,</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">reliable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">false</span><span class="p">)</span>
+</span><span id="__span-0-23"><span class="w">    </span><span class="p">{</span>
+</span><span id="__span-0-24"><span class="w">        </span><span class="n">SendServerPacket</span><span class="p">(</span><span class="n">packet</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="n">reliable</span><span class="p">);</span>
+</span><span id="__span-0-25"><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-0-26"><span class="w">    </span><span class="cp">#endregion</span>
+</span><span id="__span-0-27"><span class="p">}</span>
 </span></code></pre></div></td></tr></table></div>
-<h2 id="network-callbacks">Network Callbacks</h2>
-<div class="admonition tip">
-<p class="admonition-title">Tip</p>
-<p>See the API reference of the <a class="api-docs">NetworkManager</a> class for the list of all properties and methods.</p>
-</div>
+<h2 id="local">Local</h2>
+<p>The <a class="api-docs">LocalNetworkTransport</a> is the most basic network transport method. With local network transport, you can add support for split-screen mode without any additional coding required (just manage player input separately): each action will be seamlessly handled, even locally.</p>
+<p><img alt="Local" class="image" src="../img/transports/local.png" /></p>
+<h2 id="udp">UDP</h2>
+<p>UDP (User Datagram Protocol) is the primary gaming network protocol, thus it's the basic internet-based protocol supported. Currently, UDP connection is established using the <strong><a href="https://github.com/RevenantX/LiteNetLib" target="_blank">LiteNetLib</a></strong> library, which provides custom reliability systems that fit our gaming needs perfectly.</p>
+<p><img alt="UDP" class="image" src="../img/transports/udp.png" /></p>
+<p>In the <a class="api-docs">UDPNetworkTransport</a> component, you can set the host/remote address, host/remote port, connection password, and maximum server client limit.</p>
 
 
 

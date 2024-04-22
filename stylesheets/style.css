@@ -18,3 +18,123 @@
     margin-left: auto;
     margin-right: auto;
 }
+
+.md-typeset__table
+{
+    display: block !important;
+    width: 100% !important;
+}
+
+table:not(.highlighttable)
+{
+    display: table !important;
+    width: 100% !important;
+}
+
+.api-type-class
+{
+    background-color: #00A500;
+    border-radius: 5px;
+    padding: 2px 3px 0px 3px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.api-type-enum
+{
+    background-color: #A50000;
+    border-radius: 5px;
+    padding: 2px 3px 0px 3px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.api-type-struct
+{
+    background-color: #DF8500;
+    border-radius: 5px;
+    padding: 2px 3px 0px 3px;
+    font-size: 14px;
+    font-weight: bold;
+
+}
+
+.api-type-interface
+{
+    background-color: #00A5A5;
+    border-radius: 5px;
+    padding: 2px 3px 0px 3px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.api-path
+{
+    font-size: 14px;
+    margin-bottom: 15px;
+}
+
+.api-implements-item
+{
+    font-size: 14px;
+}
+
+.api-network-server
+{
+    background-color: #00A500;
+    border-radius: 5px;
+    padding: 2px 3px 0px 3px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.api-network-client
+{
+    background-color: #DF8500;
+    border-radius: 5px;
+    padding: 2px 3px 0px 3px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.api-method-authority
+{
+    background-color: #A50000;
+    border-radius: 5px;
+    padding: 2px 3px 0px 3px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.api-prop-type
+{
+    font-weight: bold;
+}
+
+.api-prop-getter
+{
+    background-color: #00A500;
+    border-radius: 5px;
+    padding: 2px 3px 0px 3px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.api-prop-setter
+{
+    background-color: #A50000;
+    border-radius: 5px;
+    padding: 2px 3px 0px 3px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.api-method-type
+{
+    font-weight: bold;
+}
+
+.api-method-param-type
+{
+    font-weight: bold;
+}

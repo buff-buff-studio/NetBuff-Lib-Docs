@@ -20,7 +20,7 @@
     
     
       
-        <title>Managing Scenes - NetBuff</title>
+        <title>Scene Management - NetBuff</title>
       
     
     
@@ -72,7 +72,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#managing-scenes" class="md-skip">
+        <a href="#scene-management" class="md-skip">
           Skip to content
         </a>
       
@@ -107,7 +107,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Managing Scenes
+              Scene Management
             
           </span>
         </div>
@@ -259,6 +259,26 @@
   
   
     <li class="md-nav__item">
+      <a href="../transports/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Network Transport
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../custom_behaviours/" class="md-nav__link">
         
   
@@ -292,7 +312,7 @@
           
   
   <span class="md-ellipsis">
-    Managing Scenes
+    Scene Management
   </span>
   
 
@@ -303,7 +323,7 @@
         
   
   <span class="md-ellipsis">
-    Managing Scenes
+    Scene Management
   </span>
   
 
@@ -351,15 +371,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#main-scene" class="md-nav__link">
-    <span class="md-ellipsis">
-      Main Scene
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -395,26 +406,6 @@
   
   
     <li class="md-nav__item">
-      <a href="../reconnection_and_hot_reload/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Reconnection and Hot-Reload
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../custom_network_manager/" class="md-nav__link">
         
   
@@ -435,11 +426,111 @@
   
   
     <li class="md-nav__item">
+      <a href="../discoverer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Server Discoverer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reconnection_and_hot_reload/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Reconnection and Hot-Reload
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../network_testing/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
     Testing the Network
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api_reference/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    API Reference
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../samples/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Samples
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../troubleshooting/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Common Troubleshooting
   </span>
   
 
@@ -501,15 +592,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#main-scene" class="md-nav__link">
-    <span class="md-ellipsis">
-      Main Scene
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -525,24 +607,38 @@
                   
 
 
-<h1 id="managing-scenes">Managing Scenes</h1>
-<p><b class="netbuff">NetBuff</b> supports loading/unloading scenes in runtime, allowing the system to provide level loading/unloading flow control and other scene-based control flow. Every single NetworkIdentity object has the field <b>NetworkIdentity.SceneId</b> that represents in which network loaded scene the object is:</p>
-<div class="language-csharp highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-1"><span class="k">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">SceneId</span><span class="p">;</span>
-</span></code></pre></div></td></tr></table></div>
+<h1 id="scene-management">Scene Management</h1>
+<p><b class="netbuff">NetBuff</b> supports real-time scene loading/unloading, enabling more complex flows like level loading, among others. Every <a class="api-docs">NetworkIdentity</a> has the field <a class="api-docs">NetworkIdentity.SceneId</a> which indicates in which loaded scene the object resides.</p>
 <h2 id="scene-id-rules">Scene Id Rules</h2>
-<p>The scene where your NetworkManager is located is considered the main scene, as the networking process will always start from there. The main scene will always have the id of 0.</p>
-<p>Everyother scene will have the id linked to its position if the <b>NetworkManager.LoadedScenes</b> list</p>
-<ol>
-<li>You start the network</li>
-<li>You load the scene "Test1.unity". It'll have the id 1</li>
-<li>You load the scene "Test2.unity". It'll have the id 2</li>
-<li>You unload the scene "Test1.unity"</li>
-<li>Now the scene Test2 becomes the scene 1, cause it's linked to loaded scenes list</li>
-</ol>
-<p>You can always use the scene id -1 to spawn or move objects around. This id represents the <b>NetworkManager.LastLoadedScene</b> (the scene in the last position of the loaded scenes list). If no additional scene is loaded it will point to the main scene.</p>
+<p>The scene where the <a class="api-docs">NetworkManager</a> is considered the main scene and receives the id 0, always being the first scene in the <a class="api-docs">NetworkManager.LoadedScenes</a> list, which stores all currently loaded scenes. A scene's id is defined by its index in the list and can vary according to the loading/unloading order of scenes.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The scene id -1 is the default and always refers to the last currently loaded scene (<a class="api-docs">NetworkBehaviour.LastLoadedScene</a>). Objects are spawned in this scene by default if the scene parameter is omitted.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>It's recommended to use the scene name as a persistent way to reference a scene. You can use the methods <a class="api-docs">NetworkBehaviour.GetSceneName</a> and <a class="api-docs">NetworkBehaviour.GetSceneId</a> to convert between name and id.</p>
+</div>
 <h2 id="loading-and-unloading-scenes">Loading and Unloading Scenes</h2>
-<p>Only the server can load and unload scenes, but anyone can check if a scene is loaded and which scenes are loaded right now. The <b>NetworkIdentity.SceneId</b> will be synced between every network end and every other scene-related method/property will work in any end as well.</p>
-<p>You can load / unload scenes using the <b>NetworkManager.LoadScene</b> and <b>NetworkManager.UnloadScene</b> methods:</p>
+<p>To load a scene, simply use the <a class="api-docs">NetworkManager.LoadScene</a> method, and to unload, use the <a class="api-docs">NetworkManager.UnloadScene</a> method.</p>
+<div class="language-csharp highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-1"><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">NetworkManager</span><span class="p">.</span><span class="n">Instance</span><span class="p">.</span><span class="n">IsSceneLoaded</span><span class="p">(</span><span class="n">scene1</span><span class="p">))</span>
+</span><span id="__span-0-2"><span class="w">    </span><span class="n">NetworkManager</span><span class="p">.</span><span class="n">Instance</span><span class="p">.</span><span class="n">UnloadScene</span><span class="p">(</span><span class="n">scene1</span><span class="p">);</span>
+</span><span id="__span-0-3"><span class="k">else</span>
+</span><span id="__span-0-4"><span class="w">    </span><span class="n">NetworkManager</span><span class="p">.</span><span class="n">Instance</span><span class="p">.</span><span class="n">LoadScene</span><span class="p">(</span><span class="n">scene1</span><span class="p">);</span>
+</span></code></pre></div></td></tr></table></div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>It's not possible to unload the main scene where the NetworkManager resides.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Only the server can load/unload scenes, but all scenes are synchronized for clients, and all other scene control-related methods and properties work as usual.</p>
+</div>
+<h2 id="moving-objects-between-scenes">Moving Objects Between Scenes</h2>
+<p>It's possible to move a <a class="api-docs">NetworkIdentity</a> between scenes using the <a class="api-docs">NetworkIdentity.MoveToScene</a> method.</p>
 <div class="language-csharp highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -557,67 +653,26 @@
 <span class="normal">12</span>
 <span class="normal">13</span>
 <span class="normal">14</span>
-<span class="normal">15</span>
-<span class="normal">16</span>
-<span class="normal">17</span>
-<span class="normal">18</span>
-<span class="normal">19</span>
-<span class="normal">20</span>
-<span class="normal">21</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-1-1"><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">SceneLoadingController</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">NetworkBehaviour</span>
+<span class="normal">15</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-1-1"><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">Update</span><span class="p">()</span>
 </span><span id="__span-1-2"><span class="p">{</span>
-</span><span id="__span-1-3"><span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="n">scene1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Scene1&quot;</span><span class="p">;</span>
-</span><span id="__span-1-4">
-</span><span id="__span-1-5"><span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">Update</span><span class="p">()</span>
-</span><span id="__span-1-6"><span class="w">    </span><span class="p">{</span>
-</span><span id="__span-1-7"><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">IsServer</span><span class="p">)</span>
-</span><span id="__span-1-8"><span class="w">        </span><span class="p">{</span>
-</span><span id="__span-1-9"><span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">Input</span><span class="p">.</span><span class="n">GetKeyDown</span><span class="p">(</span><span class="n">KeyCode</span><span class="p">.</span><span class="n">Alpha1</span><span class="p">))</span>
-</span><span id="__span-1-10"><span class="w">            </span><span class="p">{</span>
-</span><span id="__span-1-11"><span class="w">                </span><span class="c1">//Checks if the scene is already loaded</span>
-</span><span id="__span-1-12"><span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">NetworkManager</span><span class="p">.</span><span class="n">Instance</span><span class="p">.</span><span class="n">IsSceneLoaded</span><span class="p">(</span><span class="n">scene1</span><span class="p">))</span>
-</span><span id="__span-1-13"><span class="w">                    </span><span class="c1">//Unloads the scene</span>
-</span><span id="__span-1-14"><span class="w">                    </span><span class="n">NetworkManager</span><span class="p">.</span><span class="n">Instance</span><span class="p">.</span><span class="n">UnloadScene</span><span class="p">(</span><span class="n">scene1</span><span class="p">);</span>
-</span><span id="__span-1-15"><span class="w">                </span><span class="k">else</span>
-</span><span id="__span-1-16"><span class="w">                    </span><span class="c1">//Loads the scene</span>
-</span><span id="__span-1-17"><span class="w">                    </span><span class="n">NetworkManager</span><span class="p">.</span><span class="n">Instance</span><span class="p">.</span><span class="n">LoadScene</span><span class="p">(</span><span class="n">scene1</span><span class="p">);</span>
-</span><span id="__span-1-18"><span class="w">            </span><span class="p">}</span>
-</span><span id="__span-1-19"><span class="w">        </span><span class="p">}</span>
-</span><span id="__span-1-20"><span class="w">    </span><span class="p">}</span>
-</span><span id="__span-1-21"><span class="p">}</span>
+</span><span id="__span-1-3"><span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">HasAuthority</span><span class="p">)</span>
+</span><span id="__span-1-4"><span class="w">        </span><span class="k">return</span><span class="p">;</span>
+</span><span id="__span-1-5">
+</span><span id="__span-1-6"><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">Input</span><span class="p">.</span><span class="n">GetKeyDown</span><span class="p">(</span><span class="n">KeyCode</span><span class="p">.</span><span class="n">M</span><span class="p">))</span>
+</span><span id="__span-1-7"><span class="w">    </span><span class="p">{</span>
+</span><span id="__span-1-8"><span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">SceneId</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="m">1</span><span class="p">;</span>
+</span><span id="__span-1-9"><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">id</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="n">LoadedSceneCount</span><span class="p">)</span>
+</span><span id="__span-1-10"><span class="w">            </span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span><span class="p">;</span>
+</span><span id="__span-1-11">
+</span><span id="__span-1-12"><span class="w">        </span><span class="c1">//Moves the object to the next loaded scene</span>
+</span><span id="__span-1-13"><span class="w">        </span><span class="n">MoveToScene</span><span class="p">(</span><span class="n">id</span><span class="p">);</span>
+</span><span id="__span-1-14"><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-1-15"><span class="p">}</span>
 </span></code></pre></div></td></tr></table></div>
-<p>When you unload a scene all the NetworkIdentity objects in it will be despawned with no issues. If a late-joiner enters the game, every single object in every single scene will be synced with no problems as well. </p>
-<h2 id="moving-objects-between-scenes">Moving Objects Between Scenes</h2>
-<p>If you have the ownership over a NetworkIdentity object, you can move it between scenes easily, using the <b>NetworkIdentity.MoveToScene</b> method:</p>
-<div class="language-csharp highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-2-1"><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">Update</span><span class="p">()</span>
-</span><span id="__span-2-2"><span class="p">{</span>
-</span><span id="__span-2-3"><span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">HasAuthority</span><span class="p">)</span>
-</span><span id="__span-2-4"><span class="w">        </span><span class="k">return</span><span class="p">;</span>
-</span><span id="__span-2-5">
-</span><span id="__span-2-6"><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">Input</span><span class="p">.</span><span class="n">GetKeyDown</span><span class="p">(</span><span class="n">KeyCode</span><span class="p">.</span><span class="n">M</span><span class="p">))</span>
-</span><span id="__span-2-7"><span class="w">    </span><span class="p">{</span>
-</span><span id="__span-2-8"><span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">SceneId</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="m">1</span><span class="p">;</span>
-</span><span id="__span-2-9"><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">id</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="n">LoadedSceneCount</span><span class="p">)</span>
-</span><span id="__span-2-10"><span class="w">            </span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span><span class="p">;</span>
-</span><span id="__span-2-11"><span class="w">        </span><span class="c1">//Moves the object to the next loaded scene</span>
-</span><span id="__span-2-12"><span class="w">        </span><span class="n">MoveToScene</span><span class="p">(</span><span class="n">id</span><span class="p">);</span>
-</span><span id="__span-2-13"><span class="w">    </span><span class="p">}</span>
-</span><span id="__span-2-14"><span class="p">}</span>
-</span></code></pre></div></td></tr></table></div>
-<h2 id="main-scene">Main Scene</h2>
-<p>The main scene is the scene where your NetworkManager is. It can't be unloaded and is the scene where player prefabs spawns by default. We heavily recommend that you leave the players and anything scene-persistent on the main scene, like singletons, controllers, etc...</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>You need to have control over the <a class="api-docs">NetworkIdentity</a> to move it between scenes.</p>
+</div>
 
 
 
@@ -668,6 +723,8 @@
     
     
       <script src="../assets/javascripts/bundle.3220b9d7.min.js"></script>
+      
+        <script src="../js/auto_link.js"></script>
       
     
   </body>

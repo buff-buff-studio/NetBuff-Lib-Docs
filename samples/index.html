@@ -9,10 +9,10 @@
       
       
       
-        <link rel="prev" href="../discoverer/">
+        <link rel="prev" href="../api_reference/">
       
       
-        <link rel="next" href="../network_testing/">
+        <link rel="next" href="../troubleshooting/">
       
       
       <link rel="icon" href="../assets/images/favicon.png">
@@ -20,7 +20,7 @@
     
     
       
-        <title>Reconnection and Hot-Reload - NetBuff</title>
+        <title>Samples - NetBuff</title>
       
     
     
@@ -72,7 +72,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#reconnection-and-hot-reload" class="md-skip">
+        <a href="#samples" class="md-skip">
           Skip to content
         </a>
       
@@ -107,7 +107,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Reconnection and Hot-Reload
+              Samples
             
           </span>
         </div>
@@ -376,19 +376,10 @@
       
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../reconnection_and_hot_reload/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -397,7 +388,6 @@
   
 
       </a>
-      
     </li>
   
 
@@ -446,10 +436,19 @@
       
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../samples/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -458,6 +457,7 @@
   
 
       </a>
+      
     </li>
   
 
@@ -515,18 +515,8 @@
                   
 
 
-<h1 id="reconnection-and-hot-reload">Reconnection and Hot-Reload</h1>
-<p><b class="netbuff">NetBuff</b> supports mid/end-game connections seamlessly: Each <a class="api-docs">NetworkIdentity</a> from every scene will be synchronized, maintaining its values and additional serialized data. Even in the editor, you can edit the code, recompile the project, and the server will seamlessly maintain its state (clients will need to reconnect, but even their player objects will be kept in the same state without data loss).</p>
-<p>To keep the system running, you must ensure that the object state values are synchronized over the network, either using <a href="/api_reference#networkvalue">NetworkValues</a> or utilizing callbacks from the <a class="api-docs">INetworkBehaviourSerializer</a> interface. If you need additional synchronization, you can also request a custom package in the <a class="api-docs">NetworkBehaviour.OnSpawned</a> callback, using the <strong>isRetroactive</strong> parameter to check if it's a late synchronization or not.</p>
-<div class="admonition tip">
-<p class="admonition-title">Tip</p>
-<p>We strongly recommend that after every significant modification/addition to the system, developers perform the following checks:</p>
-<ol>
-<li>Hot-Reload functionality still works with your system.</li>
-<li>Players who connect mid/end-game do not encounter issues synchronizing the state of your game.</li>
-</ol>
-<p>These two checks ensure you won't have network state synchronization problems, and every client/player will be able to synchronize the game state seamlessly. Hot-Reload isn't necessary but can expedite network testing (in addition to demonstrating the application of best practices), as you can modify the code and <a href="/api_reference#networkvalue">NetworkValues</a> via the inspector without losing the current server state.</p>
-</div>
+<h1 id="samples">Samples 🔜</h1>
+<p>Stay tuned for exciting samples and demonstrations! We're currently working on providing you with a variety of examples to help you better understand our features and functionalities. From basic implementations to advanced techniques, our samples will cover a wide range of topics to suit your needs. Check back later for updates!</p>
 
 
 

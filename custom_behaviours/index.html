@@ -9,7 +9,7 @@
       
       
       
-        <link rel="prev" href="../components/">
+        <link rel="prev" href="../transports/">
       
       
         <link rel="next" href="../scene_management/">
@@ -256,6 +256,26 @@
       
   
   
+  
+  
+    <li class="md-nav__item">
+      <a href="../transports/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Network Transport
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
     
   
   
@@ -333,15 +353,6 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#packet-reliability" class="md-nav__link">
-    <span class="md-ellipsis">
-      Packet Reliability
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#receiving-owned-packets" class="md-nav__link">
     <span class="md-ellipsis">
       Receiving Owned Packets
@@ -351,9 +362,18 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#receiving-not-owned-any-packets" class="md-nav__link">
+  <a href="#receiving-not-owned" class="md-nav__link">
     <span class="md-ellipsis">
-      Receiving Not Owned / Any Packets
+      Receiving Not Owned
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#packet-reliability" class="md-nav__link">
+    <span class="md-ellipsis">
+      Packet Reliability
     </span>
   </a>
   
@@ -392,7 +412,7 @@
         
   
   <span class="md-ellipsis">
-    Managing Scenes
+    Scene Management
   </span>
   
 
@@ -428,26 +448,6 @@
   
   
     <li class="md-nav__item">
-      <a href="../reconnection_and_hot_reload/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Reconnection and Hot-Reload
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../custom_network_manager/" class="md-nav__link">
         
   
@@ -468,11 +468,111 @@
   
   
     <li class="md-nav__item">
+      <a href="../discoverer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Server Discoverer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reconnection_and_hot_reload/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Reconnection and Hot-Reload
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../network_testing/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
     Testing the Network
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api_reference/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    API Reference
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../samples/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Samples
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../troubleshooting/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Common Troubleshooting
   </span>
   
 
@@ -536,15 +636,6 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#packet-reliability" class="md-nav__link">
-    <span class="md-ellipsis">
-      Packet Reliability
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#receiving-owned-packets" class="md-nav__link">
     <span class="md-ellipsis">
       Receiving Owned Packets
@@ -554,9 +645,18 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#receiving-not-owned-any-packets" class="md-nav__link">
+  <a href="#receiving-not-owned" class="md-nav__link">
     <span class="md-ellipsis">
-      Receiving Not Owned / Any Packets
+      Receiving Not Owned
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#packet-reliability" class="md-nav__link">
+    <span class="md-ellipsis">
+      Packet Reliability
     </span>
   </a>
   
@@ -592,7 +692,7 @@
 
 
 <h1 id="creating-custom-behaviours">Creating Custom Behaviours</h1>
-<p>In the following sections you can find help on how to implement you own NetworkBehaviours, overriding its network callbacks. The basic structure of a NetworkBehaviour is shown bellow:</p>
+<p>To implement the logic of your project, you'll need to implement your own <a href="/api_reference/#networkbehaviour">NetworkBehaviours</a>. Below you can find the basic structure of a <a class="api-docs">NetworkBehaviour</a> and its components:</p>
 <div class="language-csharp highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -621,9 +721,16 @@
 </span><span id="__span-0-13"><span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">OnSpawned</span><span class="p">(</span><span class="kt">bool</span><span class="w"> </span><span class="n">isRetroactive</span><span class="p">){}</span>
 </span><span id="__span-0-14"><span class="p">}</span>
 </span></code></pre></div></td></tr></table></div>
-<p>There's no special rules, it works exactly like a normal MonoBehaviour, while providing network communication/syncing and the power to change the behaviour of a NetworkIdentity object</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>A <a class="api-docs">NetworkBehaviour</a> works exactly like a normal MonoBehaviour while also providing state synchronization over the network.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>It's not possible to remove and/or add a <a class="api-docs">NetworkBehaviour</a> in real-time.</p>
+</div>
 <h2 id="custom-serialization">Custom Serialization</h2>
-<p>If your class has a complex (or even variable data structure) that is too complex to be synced via NetworkValues you can use the custom serialization system. All you need to do is using the interface <b>INetworkBehaviourSerializer</b>:</p>
+<p>If your <a class="api-docs">NetworkBehaviour</a> has a state that's too complex to synchronize using only <a class="api-docs">NetworkValue</a>, you can use custom serialization. Simply implement the <a class="api-docs">INetworkBehaviourSerializer</a> interface in your <a class="api-docs">NetworkBehaviour</a>:</p>
 <div class="language-csharp highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -670,10 +777,14 @@
 </span><span id="__span-1-22"><span class="w">    </span><span class="p">}</span>
 </span><span id="__span-1-23"><span class="p">}</span>
 </span></code></pre></div></td></tr></table></div>
-<p>Doing this, all the data will be synced through the network (even for late-joiners). If your data is too complex you can implement a system to only update the needed data, but when forceSendAll is true you need to write all the data to the writer. This value will be true when a late joiner is requesting all NetworkIdentities data. You can use <b>NetworkIdentity.MarkSerializerDirty</b> to call the OnSerialize method, so the OnSerialize (with forceSendAll = false) will be called again and the data will be synced, so the other network peers will use OnDeserialize to read the data.</p>
+<p>By doing this, all data will be synchronized over the network (even if someone connects later). If the data is too complex (like that of <a class="api-docs">NetworkTransform</a>), you can implement a system to update only the necessary data, and when the <strong>forceSendAll</strong> parameter is true, all data must be synchronized. This parameter will only be true when a client connects later.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>These values are not re-updated automatically. You should use the <a class="api-docs">NetworkBehaviour.MarkSerializerDirty</a> method to trigger serialization and, consequently, deserialization (with forceSendAll = false).</p>
+</div>
 <h2 id="custom-packets">Custom Packets</h2>
-<p>The third method to create custom data transfer / syncing is using packets. Internally, all the three methods end up using Packets to send data through the network, but you can create your custom own packets. The packet system was chosen was the main transfer method of <b class="netbuff">NetBuff</b> as packets are super fast, easy-to-use and lightweight while comparated to other solutions.</p>
-<p>To create a custom packet you need to create a new class that implements the IPacket or the IOwnedPacket interface:</p>
+<p>The third (and most optimized) method to synchronize custom data is by creating packets. Internally, both of the other two methods use packets to synchronize data, and even the basic functioning of the network is based on packets.</p>
+<p>The packet-based system was chosen as the main transfer method for <b class="netbuff">NetBuff</b> because it's lightweight, fast, and highly customizable. To create a custom packet, you need to create a class that implements the <a class="api-docs">IPacket</a> or <a class="api-docs">IOwnedPacket</a> interface:</p>
 <div class="language-csharp highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -738,10 +849,10 @@
 </span><span id="__span-2-31"><span class="w">    </span><span class="p">}</span>
 </span><span id="__span-2-32"><span class="p">}</span>
 </span></code></pre></div></td></tr></table></div>
-<p>A IOwnedPacket is a IPacket that is directly attached to a NetworkIdentity, so they will be sent internally by a NetworkBehaviour and the server will find the same NetworkBehaviour at the other network peers and call the receiving callback.</p>
-<p>A normal IPacket is not directly attached to anything, so they will just sent through the network and all the handling must be done manually.</p>
+<p>A <a class="api-docs">IOwnedPacket</a> is an <a class="api-docs">IPacket</a> that is directly linked to a <a class="api-docs">NetworkIdentity</a>, therefore, they will be internally sent by a <a class="api-docs">NetworkBehaviour</a>, and the server will find the same <a class="api-docs">NetworkBehaviour</a> in other network points and call the receiving callback.</p>
+<p>A normal <a class="api-docs">IPacket</a> is not directly linked to anything, so they will simply be sent over the network, and all handling must be done manually.</p>
 <h3 id="sending-packets">Sending Packets</h3>
-<p>To send a packet you can use the SendPacket method that will automatically use the correct method to send the packet:</p>
+<p>To send a packet, simply use the <a class="api-docs">NetworkBehaviour.SendPacket</a> method, which will send the packet using the correct method automatically:</p>
 <div class="language-csharp highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -754,7 +865,7 @@
 </span><span id="__span-3-5"><span class="p">};</span>
 </span><span id="__span-3-6"><span class="n">SendPacket</span><span class="p">(</span><span class="n">packet</span><span class="p">);</span>
 </span></code></pre></div></td></tr></table></div>
-<p>Internally the SendPacket method uses the <b>NetworkBehaviour.ClientSendPacket</b> and <b>NetworkBehaviour.ServerBroadcastPacket</b> methods, so you can use them as well:</p>
+<p>Internally, the system automatically chooses between the <a class="api-docs">NetworkBehaviour.ClientSendPacket</a> and <a class="api-docs">NetworkBehaviour.ServerBroadcastPacket</a> methods depending on whether the local environment is a client or server:</p>
 <div class="language-csharp highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -763,49 +874,9 @@
 </span><span id="__span-4-3"><span class="k">else</span>
 </span><span id="__span-4-4"><span class="w">    </span><span class="nf">ServerBroadcastPacket</span><span class="p">(</span><span class="n">packet</span><span class="p">,</span><span class="w"> </span><span class="n">reliable</span><span class="p">);</span><span class="w"> </span><span class="c1">//Server broadcast a message to all the clients</span>
 </span></code></pre></div></td></tr></table></div>
-<p>If you are on the server side you can use <b>NetworkBehaviour.ServerBroadcastPacketExceptFor</b> to broadcast a message to all the clients except one. This behaviour can be useful sometimes.</p>
-<h3 id="packet-reliability">Packet Reliability</h3>
-<p>When you use any of the packet sending methods you can set the argument of reliabity. When set to true the delivery method is reliable, supports larger packets with the cost of being a little slower. When the value is set to false there no realibity, packets are limited to small sizes but the delivery is blazing fast!</p>
-<p>NetworkValue syncing and any other important/instant action are made using reliable delivery, as they need to be guaranteed to delivered. NetworkTransform in the other side don't use the reliability delivery, as their state is almost constantly updated, so losing some packets will probably not cause an issue.</p>
-<p>The packet loss count can be seen using the NetworkManagerGUI. If the network connection quality is good you may not lose a single packet, but if you have network issues you may experience some packet loss. Choose wisely when the reliability is needed or not. Most of the time the reliable=true is the way to go.</p>
-<table>
-<thead>
-<tr>
-<th></th>
-<th>Unreliable</th>
-<th>Reliable</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Speed</td>
-<td>Fast+</td>
-<td>Fast</td>
-</tr>
-<tr>
-<td>Max Size</td>
-<td>Small</td>
-<td>Large</td>
-</tr>
-<tr>
-<td>Order</td>
-<td>May be unordered</td>
-<td>The order will be kept</td>
-</tr>
-<tr>
-<td>Loss</td>
-<td>May be lost</td>
-<td>If lost they will be sent again</td>
-</tr>
-<tr>
-<td>usage Example</td>
-<td>NetworkTransform, high-freq update packets</td>
-<td>Actions, NetworkValues, etc...</td>
-</tr>
-</tbody>
-</table>
+<p>The server can also use the <a class="api-docs">NetworkBehaviour.ServerSendPacket</a> method to send a packet to a single client or the <a class="api-docs">NetworkBehaviour.ServerBroadcastPacketExceptFor</a> method to send to all clients except one.</p>
 <h3 id="receiving-owned-packets">Receiving Owned Packets</h3>
-<p>To receive IOwnedPackets we can use the <b>NetworkBehaviour.OnServerReceivePacket</b> and <b>NetworkBehaviour.OnClientReceivePacket</b> callbacks:</p>
+<p>To receive <a class="api-docs">IOwnedPackets</a>, you can use the <a class="api-docs">NetworkBehaviour.OnServerReceivePacket</a> and <a class="api-docs">NetworkBehaviour.OnClientReceivePacket</a> callbacks:</p>
 <div class="language-csharp highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -833,7 +904,7 @@
 <span class="normal">25</span>
 <span class="normal">26</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-5-1"><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">PlayerController</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">NetworkBehaviour</span>
 </span><span id="__span-5-2"><span class="p">{</span>
-</span><span id="__span-5-3"><span class="w">    </span><span class="c1">//Server received the packet, check the ownership (optional) than broadcasts it to everyone else than the origin client</span>
+</span><span id="__span-5-3"><span class="w">    </span><span class="c1">//Server received the packet, check the ownership (optional) then broadcasts it to everyone else than the origin client</span>
 </span><span id="__span-5-4"><span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">OnServerReceivePacket</span><span class="p">(</span><span class="n">IOwnedPacket</span><span class="w"> </span><span class="n">packet</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">clientId</span><span class="p">)</span>
 </span><span id="__span-5-5"><span class="w">    </span><span class="p">{</span>
 </span><span id="__span-5-6"><span class="w">        </span><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="n">packet</span><span class="p">)</span>
@@ -846,7 +917,7 @@
 </span><span id="__span-5-13"><span class="w">    </span><span class="p">}</span>
 </span><span id="__span-5-14">
 </span><span id="__span-5-15">
-</span><span id="__span-5-16"><span class="w">    </span><span class="c1">//Client received the packet, then applied it to the transform itslf</span>
+</span><span id="__span-5-16"><span class="w">    </span><span class="c1">//Client received the packet, then applied it to the transform itself</span>
 </span><span id="__span-5-17"><span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">OnClientReceivePacket</span><span class="p">(</span><span class="n">IOwnedPacket</span><span class="w"> </span><span class="n">packet</span><span class="p">)</span>
 </span><span id="__span-5-18"><span class="w">    </span><span class="p">{</span>
 </span><span id="__span-5-19"><span class="w">        </span><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="n">packet</span><span class="p">)</span>
@@ -858,9 +929,12 @@
 </span><span id="__span-5-25"><span class="w">    </span><span class="p">}</span>
 </span><span id="__span-5-26"><span class="p">}</span>
 </span></code></pre></div></td></tr></table></div>
-<p>Only the object with the IOwnedPacket id will receive the callbacks, so you don't need to worry checking the id manually!</p>
-<h3 id="receiving-not-owned-any-packets">Receiving Not Owned / Any Packets</h3>
-<p>If a packet is not owned you can register a custom listener for it anywhere in the project. In the example bellow the Lever class is listening for PlayerPunchActionPacket, which is a packet that is sent by the PlayerController class:</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Only the object with the <a class="api-docs">IOwnedPacket.Id</a> will receive the callbacks, so you don't need to worry about checking the id manually!</p>
+</div>
+<h3 id="receiving-not-owned">Receiving Not Owned</h3>
+<p>If a packet is not owned, you can register a custom listener for it anywhere in the project. In the example below, the Lever class is listening for PlayerPunchActionPacket, which is a packet sent by the PlayerController class:</p>
 <div class="language-csharp highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -945,66 +1019,51 @@
 </span><span id="__span-6-41"><span class="w">    </span><span class="p">}</span>
 </span><span id="__span-6-42"><span class="p">}</span>
 </span></code></pre></div></td></tr></table></div>
-<p>You can use the <b>NetworkBehaviour.GetPacketListener</b> to listen to IOwnedPackets as well.</p>
-<h2 id="network-callbacks">Network Callbacks</h2>
-<p>In the table bellow you can find a list of all the NetworkBehaviour class callbacks:</p>
+<h3 id="packet-reliability">Packet Reliability</h3>
+<p>When you use any of the packet sending methods, you can set the reliability argument. When set to true, the delivery method is reliable, supporting larger packets at the cost of being slightly slower. When set to false, there's no reliability, packets are limited to small sizes, but delivery is extremely fast!</p>
+<p>Synchronization of <a class="api-docs">NetworkValue</a> and any other important/instantaneous actions are done using reliable delivery because they need to be guaranteed. <a class="api-docs">NetworkTransform</a>, on the other hand, doesn't use reliable delivery because its state is updated almost constantly, so losing some packets probably won't cause issues.</p>
+<p>Packet loss can be seen using the <a class="api-docs">NetworkManagerGUI</a>. If the network connection quality is good, you might not lose any packets, but if you have network issues, you might experience some packet loss. Choose wisely when reliability is needed or not. Most of the time, it's better to use reliable=true.</p>
 <table>
 <thead>
 <tr>
-<th>Name</th>
-<th>Parameters</th>
-<th>Description</th>
+<th></th>
+<th>Unreliable</th>
+<th>Reliable</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>OnServerReceivePacket</td>
-<td>IOwnedPacket packet int clientId</td>
-<td>Called when the server side object receives an IOwnedPacket (Called on host as well)</td>
+<td>Speed</td>
+<td>Fast+</td>
+<td>Fast</td>
 </tr>
 <tr>
-<td>OnClientReceivePacket</td>
-<td>IOwnedPacket packet</td>
-<td>Called when the client side object receives and IOwnedPacket (Called on host as well)</td>
+<td>Max Size</td>
+<td>Small</td>
+<td>Large</td>
 </tr>
 <tr>
-<td>OnSpawned</td>
-<td>bool isRetroactive</td>
-<td>Called in the first frame that a NetworkIdentity object exists into the network. isRetroactive will be true for late-joiners syncing purposes</td>
+<td>Order</td>
+<td>Can be unordered</td>
+<td>Order will be maintained</td>
 </tr>
 <tr>
-<td>OnSceneChanged</td>
-<td>int fromScene int toScene</td>
-<td>Called when the object is moved from one scene to another</td>
+<td>Loss</td>
+<td>Can be lost</td>
+<td>If lost, they will be resent</td>
 </tr>
 <tr>
-<td>OnClientConnected</td>
-<td>int clientId</td>
-<td>Called when a client connect to the server (Called only on server)</td>
-</tr>
-<tr>
-<td>OnClientDisconnected</td>
-<td>int clientId</td>
-<td>Called when a client disconnect from the server (Called only on server)</td>
-</tr>
-<tr>
-<td>OnDespawned</td>
-<td></td>
-<td>Called when a NetworkIdentiy object is despawned</td>
-</tr>
-<tr>
-<td>OnActiveChanged</td>
-<td>bool active</td>
-<td>Called when the activeness of a NetworkIdentity object changes</td>
-</tr>
-<tr>
-<td>OnOwnershipChanged</td>
-<td>int oldOwner int newOwner</td>
-<td>Called when the ownership of a NetworkIdentity object changes</td>
+<td>Example Usage</td>
+<td>NetworkTransform, high-frequency update packets</td>
+<td>Actions, NetworkValues, etc...</td>
 </tr>
 </tbody>
 </table>
-<p>You can use any Unity callback normally as a NetworkBehaviour is also a MonoBehaviour.</p>
+<h2 id="network-callbacks">Network Callbacks</h2>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>See the API reference of the <a class="api-docs">NetworkBehaviour</a> class for the list of all properties and methods.</p>
+</div>
 
 
 
@@ -1055,6 +1114,8 @@
     
     
       <script src="../assets/javascripts/bundle.3220b9d7.min.js"></script>
+      
+        <script src="../js/auto_link.js"></script>
       
     
   </body>
