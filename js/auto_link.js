@@ -6,7 +6,7 @@ for (var i = 0; i < links.length; i++)
 
     var text = link.textContent.replace(/\./g, '-').trim().toLowerCase();
 
-    link.href = '/api_reference/#' + text;
+    link.href = '../api_reference/#' + text;
 }
 
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
