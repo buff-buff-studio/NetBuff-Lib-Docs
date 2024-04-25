@@ -28,6 +28,8 @@ window.onload = function () {
 
     if (hash) {
         var target = document.querySelector(hash);
+        if(target == null)
+            return;
         var offset = target.getBoundingClientRect().top - window.innerHeight / 2 + window.scrollY;
 
         window.scrollTo({
