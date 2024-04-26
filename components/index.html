@@ -1,1078 +1,1057 @@
-<!DOCTYPE html>
+
+<!doctype html>
 <html lang="en" class="no-js">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../getting_started/">
+      
+      
+        <link rel="next" href="../transports/">
+      
+      
+      <link rel="icon" href="../img/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.18">
+    
+    
+      
+        <title>Components - NetBuff</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.66ac8b77.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
 
-    <link rel="prev" href="../getting_started/" />
 
-    <link rel="next" href="../transports/" />
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../stylesheets/style.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
 
-    <link rel="icon" href="../img/favicon.png" />
-    <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.18" />
-
-    <title>Components - NetBuff</title>
-
-    <link rel="stylesheet" href="../assets/stylesheets/main.66ac8b77.min.css" />
-
-    <link
-      rel="stylesheet"
-      href="../assets/stylesheets/palette.06af60db.min.css"
-    />
-
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback"
-    />
-    <style>
-      :root {
-        --md-text-font: "Roboto";
-        --md-code-font: "Roboto Mono";
-      }
-    </style>
-
-    <link rel="stylesheet" href="../stylesheets/style.css" />
-
-    <script>
-      (__md_scope = new URL("..", location)),
-        (__md_hash = (e) =>
-          [...e].reduce((e, _) => (e << 5) - e + _.charCodeAt(0), 0)),
-        (__md_get = (e, _ = localStorage, t = __md_scope) =>
-          JSON.parse(_.getItem(t.pathname + "." + e))),
-        (__md_set = (e, _, t = localStorage, a = __md_scope) => {
-          try {
-            t.setItem(a.pathname + "." + e, JSON.stringify(_));
-          } catch (e) {}
-        });
-    </script>
+    
+    
+    
   </head>
-
-  <body
-    dir="ltr"
-    data-md-color-scheme="slate"
-    data-md-color-primary="green"
-    data-md-color-accent="indigo"
-  >
-    <input
-      class="md-toggle"
-      data-md-toggle="drawer"
-      type="checkbox"
-      id="__drawer"
-      autocomplete="off"
-    />
-    <input
-      class="md-toggle"
-      data-md-toggle="search"
-      type="checkbox"
-      id="__search"
-      autocomplete="off"
-    />
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="green" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
-      <a href="#components" class="md-skip"> Skip to content </a>
-    </div>
-    <div data-md-component="announce"></div>
-
-    <header class="md-header md-header--shadow" data-md-component="header">
-      <nav class="md-header__inner md-grid" aria-label="Header">
-        <a
-          href=".."
-          title="NetBuff"
-          class="md-header__button md-logo"
-          aria-label="NetBuff"
-          data-md-component="logo"
-        >
-          <img src="../img/logo.png" alt="logo" />
+      
+        
+        <a href="#components" class="md-skip">
+          Skip to content
         </a>
-        <label class="md-header__button md-icon" for="__drawer">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-            <path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z" />
-          </svg>
-        </label>
-        <div class="md-header__title" data-md-component="header-title">
-          <div class="md-header__ellipsis">
-            <div class="md-header__topic">
-              <span class="md-ellipsis"> NetBuff </span>
-            </div>
-            <div class="md-header__topic" data-md-component="header-topic">
-              <span class="md-ellipsis"> Components </span>
-            </div>
-          </div>
-        </div>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
 
-        <label class="md-header__button md-icon" for="__search">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-            <path
-              d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"
-            />
-          </svg>
-        </label>
-        <div class="md-search" data-md-component="search" role="dialog">
-          <label class="md-search__overlay" for="__search"></label>
-          <div class="md-search__inner" role="search">
-            <form class="md-search__form" name="search">
-              <input
-                type="text"
-                class="md-search__input"
-                name="query"
-                aria-label="Search"
-                placeholder="Search"
-                autocapitalize="off"
-                autocorrect="off"
-                autocomplete="off"
-                spellcheck="false"
-                data-md-component="search-query"
-                required
-              />
-              <label class="md-search__icon md-icon" for="__search">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                  <path
-                    d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"
-                  />
-                </svg>
+  
 
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                  <path
-                    d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"
-                  />
-                </svg>
-              </label>
-              <nav class="md-search__options" aria-label="Search">
-                <button
-                  type="reset"
-                  class="md-search__icon md-icon"
-                  title="Clear"
-                  aria-label="Clear"
-                  tabindex="-1"
-                >
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                    <path
-                      d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"
-                    />
-                  </svg>
-                </button>
-              </nav>
-            </form>
-            <div class="md-search__output">
-              <div class="md-search__scrollwrap" data-md-scrollfix>
-                <div class="md-search-result" data-md-component="search-result">
-                  <div class="md-search-result__meta">Initializing search</div>
-                  <ol class="md-search-result__list" role="presentation"></ol>
-                </div>
-              </div>
-            </div>
-          </div>
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="NetBuff" class="md-header__button md-logo" aria-label="NetBuff" data-md-component="logo">
+      
+  <img src="../img/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            NetBuff
+          </span>
         </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Components
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
       </nav>
-    </header>
-
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
     <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
       <main class="md-main" data-md-component="main">
         <div class="md-main__inner md-grid">
-          <div
-            class="md-sidebar md-sidebar--primary"
-            data-md-component="sidebar"
-            data-md-type="navigation"
-          >
-            <div class="md-sidebar__scrollwrap">
-              <div class="md-sidebar__inner">
-                <nav
-                  class="md-nav md-nav--primary"
-                  aria-label="Navigation"
-                  data-md-level="0"
-                >
-                  <label class="md-nav__title" for="__drawer">
-                    <a
-                      href=".."
-                      title="NetBuff"
-                      class="md-nav__button md-logo"
-                      aria-label="NetBuff"
-                      data-md-component="logo"
-                    >
-                      <img src="../img/logo.png" alt="logo" />
-                    </a>
-                    NetBuff
-                  </label>
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
 
-                  <ul class="md-nav__list" data-md-scrollfix>
-                    <li class="md-nav__item">
-                      <a href=".." class="md-nav__link">
-                        <span class="md-ellipsis"> Home </span>
-                      </a>
-                    </li>
 
-                    <li class="md-nav__item">
-                      <a href="../getting_started/" class="md-nav__link">
-                        <span class="md-ellipsis"> Getting Started </span>
-                      </a>
-                    </li>
 
-                    <li class="md-nav__item md-nav__item--active">
-                      <input
-                        class="md-nav__toggle md-toggle"
-                        type="checkbox"
-                        id="__toc"
-                      />
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="NetBuff" class="md-nav__button md-logo" aria-label="NetBuff" data-md-component="logo">
+      
+  <img src="../img/logo.png" alt="logo">
 
-                      <label
-                        class="md-nav__link md-nav__link--active"
-                        for="__toc"
-                      >
-                        <span class="md-ellipsis"> Components </span>
+    </a>
+    NetBuff
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
 
-                        <span class="md-nav__icon md-icon"></span>
-                      </label>
+      </a>
+    </li>
+  
 
-                      <a href="./" class="md-nav__link md-nav__link--active">
-                        <span class="md-ellipsis"> Components </span>
-                      </a>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../getting_started/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Getting Started
+  </span>
+  
 
-                      <nav
-                        class="md-nav md-nav--secondary"
-                        aria-label="Table of contents"
-                      >
-                        <label class="md-nav__title" for="__toc">
-                          <span class="md-nav__icon md-icon"></span>
-                          Table of contents
-                        </label>
-                        <ul
-                          class="md-nav__list"
-                          data-md-component="toc"
-                          data-md-scrollfix
-                        >
-                          <li class="md-nav__item">
-                            <a href="#network-manager" class="md-nav__link">
-                              <span class="md-ellipsis"> Network Manager </span>
-                            </a>
-                          </li>
+      </a>
+    </li>
+  
 
-                          <li class="md-nav__item">
-                            <a href="#network-manager-gui" class="md-nav__link">
-                              <span class="md-ellipsis">
-                                Network Manager GUI
-                              </span>
-                            </a>
-                          </li>
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Components
+  </span>
+  
 
-                          <li class="md-nav__item">
-                            <a href="#network-identity" class="md-nav__link">
-                              <span class="md-ellipsis">
-                                Network Identity
-                              </span>
-                            </a>
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Components
+  </span>
+  
 
-                            <nav class="md-nav" aria-label="Network Identity">
-                              <ul class="md-nav__list">
-                                <li class="md-nav__item">
-                                  <a href="#ownership" class="md-nav__link">
-                                    <span class="md-ellipsis"> Ownership </span>
-                                  </a>
-                                </li>
+      </a>
+      
+        
 
-                                <li class="md-nav__item">
-                                  <a
-                                    href="#finding-objects"
-                                    class="md-nav__link"
-                                  >
-                                    <span class="md-ellipsis">
-                                      Finding Objects
-                                    </span>
-                                  </a>
-                                </li>
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#network-manager" class="md-nav__link">
+    <span class="md-ellipsis">
+      Network Manager
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#network-manager-gui" class="md-nav__link">
+    <span class="md-ellipsis">
+      Network Manager GUI
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#network-identity" class="md-nav__link">
+    <span class="md-ellipsis">
+      Network Identity
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Network Identity">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ownership" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ownership
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#finding-objects" class="md-nav__link">
+    <span class="md-ellipsis">
+      Finding Objects
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#spawning-objects" class="md-nav__link">
+    <span class="md-ellipsis">
+      Spawning Objects
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#despawning-objects" class="md-nav__link">
+    <span class="md-ellipsis">
+      Despawning Objects
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#activating-deactivating-objects" class="md-nav__link">
+    <span class="md-ellipsis">
+      Activating / Deactivating Objects
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#network-prefab-registry" class="md-nav__link">
+    <span class="md-ellipsis">
+      Network Prefab Registry
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#network-behaviour" class="md-nav__link">
+    <span class="md-ellipsis">
+      Network Behaviour
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Network Behaviour">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#network-transform" class="md-nav__link">
+    <span class="md-ellipsis">
+      Network Transform
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#network-rigidbody-transform" class="md-nav__link">
+    <span class="md-ellipsis">
+      Network Rigidbody Transform
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#network-animator" class="md-nav__link">
+    <span class="md-ellipsis">
+      Network Animator
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#network-value" class="md-nav__link">
+    <span class="md-ellipsis">
+      Network Value
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Network Value">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#supported-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      Supported Types
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#custom-type-support" class="md-nav__link">
+    <span class="md-ellipsis">
+      Custom Type Support
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#listening-for-changes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Listening For Changes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#modifier-type" class="md-nav__link">
+    <span class="md-ellipsis">
+      Modifier Type
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
 
-                                <li class="md-nav__item">
-                                  <a
-                                    href="#spawning-objects"
-                                    class="md-nav__link"
-                                  >
-                                    <span class="md-ellipsis">
-                                      Spawning Objects
-                                    </span>
-                                  </a>
-                                </li>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../transports/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Network Transport
+  </span>
+  
 
-                                <li class="md-nav__item">
-                                  <a
-                                    href="#despawning-objects"
-                                    class="md-nav__link"
-                                  >
-                                    <span class="md-ellipsis">
-                                      Despawning Objects
-                                    </span>
-                                  </a>
-                                </li>
+      </a>
+    </li>
+  
 
-                                <li class="md-nav__item">
-                                  <a
-                                    href="#activating-deactivating-objects"
-                                    class="md-nav__link"
-                                  >
-                                    <span class="md-ellipsis">
-                                      Activating / Deactivating Objects
-                                    </span>
-                                  </a>
-                                </li>
-                              </ul>
-                            </nav>
-                          </li>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../custom_behaviours/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Creating Custom Behaviours
+  </span>
+  
 
-                          <li class="md-nav__item">
-                            <a
-                              href="#network-prefab-registry"
-                              class="md-nav__link"
-                            >
-                              <span class="md-ellipsis">
-                                Network Prefab Registry
-                              </span>
-                            </a>
-                          </li>
+      </a>
+    </li>
+  
 
-                          <li class="md-nav__item">
-                            <a href="#network-behaviour" class="md-nav__link">
-                              <span class="md-ellipsis">
-                                Network Behaviour
-                              </span>
-                            </a>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../scene_management/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Scene Management
+  </span>
+  
 
-                            <nav class="md-nav" aria-label="Network Behaviour">
-                              <ul class="md-nav__list">
-                                <li class="md-nav__item">
-                                  <a
-                                    href="#network-transform"
-                                    class="md-nav__link"
-                                  >
-                                    <span class="md-ellipsis">
-                                      Network Transform
-                                    </span>
-                                  </a>
-                                </li>
+      </a>
+    </li>
+  
 
-                                <li class="md-nav__item">
-                                  <a
-                                    href="#network-rigidbody-transform"
-                                    class="md-nav__link"
-                                  >
-                                    <span class="md-ellipsis">
-                                      Network Rigidbody Transform
-                                    </span>
-                                  </a>
-                                </li>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../object_spawning/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Spawning Objects
+  </span>
+  
 
-                                <li class="md-nav__item">
-                                  <a
-                                    href="#network-animator"
-                                    class="md-nav__link"
-                                  >
-                                    <span class="md-ellipsis">
-                                      Network Animator
-                                    </span>
-                                  </a>
-                                </li>
-                              </ul>
-                            </nav>
-                          </li>
+      </a>
+    </li>
+  
 
-                          <li class="md-nav__item">
-                            <a href="#network-value" class="md-nav__link">
-                              <span class="md-ellipsis"> Network Value </span>
-                            </a>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../custom_network_manager/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Custom Network Manager
+  </span>
+  
 
-                            <nav class="md-nav" aria-label="Network Value">
-                              <ul class="md-nav__list">
-                                <li class="md-nav__item">
-                                  <a
-                                    href="#supported-types"
-                                    class="md-nav__link"
-                                  >
-                                    <span class="md-ellipsis">
-                                      Supported Types
-                                    </span>
-                                  </a>
-                                </li>
+      </a>
+    </li>
+  
 
-                                <li class="md-nav__item">
-                                  <a
-                                    href="#custom-type-support"
-                                    class="md-nav__link"
-                                  >
-                                    <span class="md-ellipsis">
-                                      Custom Type Support
-                                    </span>
-                                  </a>
-                                </li>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../managing_sessions/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Managing Sessions
+  </span>
+  
 
-                                <li class="md-nav__item">
-                                  <a
-                                    href="#listening-for-changes"
-                                    class="md-nav__link"
-                                  >
-                                    <span class="md-ellipsis">
-                                      Listening For Changes
-                                    </span>
-                                  </a>
-                                </li>
+      </a>
+    </li>
+  
 
-                                <li class="md-nav__item">
-                                  <a href="#modifier-type" class="md-nav__link">
-                                    <span class="md-ellipsis">
-                                      Modifier Type
-                                    </span>
-                                  </a>
-                                </li>
-                              </ul>
-                            </nav>
-                          </li>
-                        </ul>
-                      </nav>
-                    </li>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../discoverer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Server Discoverer
+  </span>
+  
 
-                    <li class="md-nav__item">
-                      <a href="../transports/" class="md-nav__link">
-                        <span class="md-ellipsis"> Network Transport </span>
-                      </a>
-                    </li>
+      </a>
+    </li>
+  
 
-                    <li class="md-nav__item">
-                      <a href="../custom_behaviours/" class="md-nav__link">
-                        <span class="md-ellipsis">
-                          Creating Custom Behaviours
-                        </span>
-                      </a>
-                    </li>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reconnection_and_hot_reload/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Reconnection and Hot-Reload
+  </span>
+  
 
-                    <li class="md-nav__item">
-                      <a href="../scene_management/" class="md-nav__link">
-                        <span class="md-ellipsis"> Scene Management </span>
-                      </a>
-                    </li>
+      </a>
+    </li>
+  
 
-                    <li class="md-nav__item">
-                      <a href="../object_spawning/" class="md-nav__link">
-                        <span class="md-ellipsis"> Spawning Objects </span>
-                      </a>
-                    </li>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../network_actions/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Network Actions
+  </span>
+  
 
-                    <li class="md-nav__item">
-                      <a href="../custom_network_manager/" class="md-nav__link">
-                        <span class="md-ellipsis">
-                          Custom Network Manager
-                        </span>
-                      </a>
-                    </li>
+      </a>
+    </li>
+  
 
-                    <li class="md-nav__item">
-                      <a href="../managing_sessions/" class="md-nav__link">
-                        <span class="md-ellipsis"> Managing Sessions </span>
-                      </a>
-                    </li>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../network_testing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Testing the Network
+  </span>
+  
 
-                    <li class="md-nav__item">
-                      <a href="../discoverer/" class="md-nav__link">
-                        <span class="md-ellipsis"> Server Discoverer </span>
-                      </a>
-                    </li>
+      </a>
+    </li>
+  
 
-                    <li class="md-nav__item">
-                      <a
-                        href="../reconnection_and_hot_reload/"
-                        class="md-nav__link"
-                      >
-                        <span class="md-ellipsis">
-                          Reconnection and Hot-Reload
-                        </span>
-                      </a>
-                    </li>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../samples/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Samples
+  </span>
+  
 
-                    <li class="md-nav__item">
-                      <a href="../network_actions/" class="md-nav__link">
-                        <span class="md-ellipsis"> Network Actions </span>
-                      </a>
-                    </li>
+      </a>
+    </li>
+  
 
-                    <li class="md-nav__item">
-                      <a href="../network_testing/" class="md-nav__link">
-                        <span class="md-ellipsis"> Testing the Network </span>
-                      </a>
-                    </li>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../troubleshooting/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Common Troubleshooting
+  </span>
+  
 
-                    <li class="md-nav__item">
-                      <a href="../samples/" class="md-nav__link">
-                        <span class="md-ellipsis"> Samples </span>
-                      </a>
-                    </li>
+      </a>
+    </li>
+  
 
-                    <li class="md-nav__item">
-                      <a href="../troubleshooting/" class="md-nav__link">
-                        <span class="md-ellipsis">
-                          Common Troubleshooting
-                        </span>
-                      </a>
-                    </li>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api_reference/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    API Reference
+  </span>
+  
 
-                    <li class="md-nav__item">
-                      <a href="../api_reference/" class="md-nav__link">
-                        <span class="md-ellipsis"> API Reference </span>
-                      </a>
-                    </li>
-                  </ul>
-                </nav>
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
 
-          <div
-            class="md-sidebar md-sidebar--secondary"
-            data-md-component="sidebar"
-            data-md-type="toc"
-          >
-            <div class="md-sidebar__scrollwrap">
-              <div class="md-sidebar__inner">
-                <nav
-                  class="md-nav md-nav--secondary"
-                  aria-label="Table of contents"
-                >
-                  <label class="md-nav__title" for="__toc">
-                    <span class="md-nav__icon md-icon"></span>
-                    Table of contents
-                  </label>
-                  <ul
-                    class="md-nav__list"
-                    data-md-component="toc"
-                    data-md-scrollfix
-                  >
-                    <li class="md-nav__item">
-                      <a href="#network-manager" class="md-nav__link">
-                        <span class="md-ellipsis"> Network Manager </span>
-                      </a>
-                    </li>
-
-                    <li class="md-nav__item">
-                      <a href="#network-manager-gui" class="md-nav__link">
-                        <span class="md-ellipsis"> Network Manager GUI </span>
-                      </a>
-                    </li>
-
-                    <li class="md-nav__item">
-                      <a href="#network-identity" class="md-nav__link">
-                        <span class="md-ellipsis"> Network Identity </span>
-                      </a>
-
-                      <nav class="md-nav" aria-label="Network Identity">
-                        <ul class="md-nav__list">
-                          <li class="md-nav__item">
-                            <a href="#ownership" class="md-nav__link">
-                              <span class="md-ellipsis"> Ownership </span>
-                            </a>
-                          </li>
-
-                          <li class="md-nav__item">
-                            <a href="#finding-objects" class="md-nav__link">
-                              <span class="md-ellipsis"> Finding Objects </span>
-                            </a>
-                          </li>
-
-                          <li class="md-nav__item">
-                            <a href="#spawning-objects" class="md-nav__link">
-                              <span class="md-ellipsis">
-                                Spawning Objects
-                              </span>
-                            </a>
-                          </li>
-
-                          <li class="md-nav__item">
-                            <a href="#despawning-objects" class="md-nav__link">
-                              <span class="md-ellipsis">
-                                Despawning Objects
-                              </span>
-                            </a>
-                          </li>
-
-                          <li class="md-nav__item">
-                            <a
-                              href="#activating-deactivating-objects"
-                              class="md-nav__link"
-                            >
-                              <span class="md-ellipsis">
-                                Activating / Deactivating Objects
-                              </span>
-                            </a>
-                          </li>
-                        </ul>
-                      </nav>
-                    </li>
-
-                    <li class="md-nav__item">
-                      <a href="#network-prefab-registry" class="md-nav__link">
-                        <span class="md-ellipsis">
-                          Network Prefab Registry
-                        </span>
-                      </a>
-                    </li>
-
-                    <li class="md-nav__item">
-                      <a href="#network-behaviour" class="md-nav__link">
-                        <span class="md-ellipsis"> Network Behaviour </span>
-                      </a>
-
-                      <nav class="md-nav" aria-label="Network Behaviour">
-                        <ul class="md-nav__list">
-                          <li class="md-nav__item">
-                            <a href="#network-transform" class="md-nav__link">
-                              <span class="md-ellipsis">
-                                Network Transform
-                              </span>
-                            </a>
-                          </li>
-
-                          <li class="md-nav__item">
-                            <a
-                              href="#network-rigidbody-transform"
-                              class="md-nav__link"
-                            >
-                              <span class="md-ellipsis">
-                                Network Rigidbody Transform
-                              </span>
-                            </a>
-                          </li>
-
-                          <li class="md-nav__item">
-                            <a href="#network-animator" class="md-nav__link">
-                              <span class="md-ellipsis">
-                                Network Animator
-                              </span>
-                            </a>
-                          </li>
-                        </ul>
-                      </nav>
-                    </li>
-
-                    <li class="md-nav__item">
-                      <a href="#network-value" class="md-nav__link">
-                        <span class="md-ellipsis"> Network Value </span>
-                      </a>
-
-                      <nav class="md-nav" aria-label="Network Value">
-                        <ul class="md-nav__list">
-                          <li class="md-nav__item">
-                            <a href="#supported-types" class="md-nav__link">
-                              <span class="md-ellipsis"> Supported Types </span>
-                            </a>
-                          </li>
-
-                          <li class="md-nav__item">
-                            <a href="#custom-type-support" class="md-nav__link">
-                              <span class="md-ellipsis">
-                                Custom Type Support
-                              </span>
-                            </a>
-                          </li>
-
-                          <li class="md-nav__item">
-                            <a
-                              href="#listening-for-changes"
-                              class="md-nav__link"
-                            >
-                              <span class="md-ellipsis">
-                                Listening For Changes
-                              </span>
-                            </a>
-                          </li>
-
-                          <li class="md-nav__item">
-                            <a href="#modifier-type" class="md-nav__link">
-                              <span class="md-ellipsis"> Modifier Type </span>
-                            </a>
-                          </li>
-                        </ul>
-                      </nav>
-                    </li>
-                  </ul>
-                </nav>
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#network-manager" class="md-nav__link">
+    <span class="md-ellipsis">
+      Network Manager
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#network-manager-gui" class="md-nav__link">
+    <span class="md-ellipsis">
+      Network Manager GUI
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#network-identity" class="md-nav__link">
+    <span class="md-ellipsis">
+      Network Identity
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Network Identity">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ownership" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ownership
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#finding-objects" class="md-nav__link">
+    <span class="md-ellipsis">
+      Finding Objects
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#spawning-objects" class="md-nav__link">
+    <span class="md-ellipsis">
+      Spawning Objects
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#despawning-objects" class="md-nav__link">
+    <span class="md-ellipsis">
+      Despawning Objects
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#activating-deactivating-objects" class="md-nav__link">
+    <span class="md-ellipsis">
+      Activating / Deactivating Objects
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#network-prefab-registry" class="md-nav__link">
+    <span class="md-ellipsis">
+      Network Prefab Registry
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#network-behaviour" class="md-nav__link">
+    <span class="md-ellipsis">
+      Network Behaviour
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Network Behaviour">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#network-transform" class="md-nav__link">
+    <span class="md-ellipsis">
+      Network Transform
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#network-rigidbody-transform" class="md-nav__link">
+    <span class="md-ellipsis">
+      Network Rigidbody Transform
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#network-animator" class="md-nav__link">
+    <span class="md-ellipsis">
+      Network Animator
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#network-value" class="md-nav__link">
+    <span class="md-ellipsis">
+      Network Value
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Network Value">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#supported-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      Supported Types
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#custom-type-support" class="md-nav__link">
+    <span class="md-ellipsis">
+      Custom Type Support
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#listening-for-changes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Listening For Changes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#modifier-type" class="md-nav__link">
+    <span class="md-ellipsis">
+      Modifier Type
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
 
-          <div class="md-content" data-md-component="content">
-            <article class="md-content__inner md-typeset">
-              <h1 id="components">Components</h1>
-              <p>
-                The image below presents a scheme with the main network
-                components of <b class="netbuff">NetBuff</b>:
-              </p>
-              <p>
-                <img alt="Map" class="image" src="../img/components/map.png" />
-              </p>
-              <p>
-                To develop your project, it is necessary to first understand the
-                main functionalities of each part of the system. In the sections
-                below, you can find information about each of the basic
-                components.
-              </p>
-              <h2 id="network-manager">Network Manager</h2>
-              <p>
-                The <a class="api-docs">NetworkManager</a> component is the main
-                component of the system, responsible for controlling the state
-                of objects, packet delivery, and data synchronization between
-                clients and the server, as well as controlling the
-                initialization of network parts.
-              </p>
-              <p>
-                <img
-                  alt="Network Manager"
-                  class="image"
-                  src="../img/components/network_manager.png"
-                />
-              </p>
-              <h2 id="network-manager-gui">Network Manager GUI</h2>
-              <p>
-                The <a class="api-docs">NetworkManagerGUI</a> component is
-                created to facilitate initial system testing. It creates a user
-                interface with basic controls as well as statistics about the
-                current connection. It can plot graphs into the screen showing
-                FPS, latency and packet incoming/outgoing rates.
-              </p>
-              <p>
-                <img
-                  alt="Network Manager GUI"
-                  class="image"
-                  src="../img/components/network_manager_gui.png"
-                />
-              </p>
-              <div class="admonition warning">
-                <p class="admonition-title">Warning</p>
-                <p>
-                  Using this component in a production environment is not
-                  recommended.
-                </p>
-              </div>
-              <h2 id="network-identity">Network Identity</h2>
-              <p>
-                The <a class="api-docs">NetworkIdentity</a> component is used
-                for the system to maintain references to objects in all network
-                environments, that is, for the system to synchronize an object
-                even on different machines. Every synchronized object needs to
-                have a <a class="api-docs">NetworkIdentity</a>. In the
-                inspector, the <a class="api-docs">NetworkId</a> of the identity
-                is displayed, which is internally composed of 2 Int16 (totaling
-                32 bits), displayed as a string of 16 hexadecimal characters.
-              </p>
-              <p>
-                <img
-                  alt="Network Identity"
-                  class="image"
-                  src="../img/components/network_identity.png"
-                />
-              </p>
-              <h3 id="ownership">Ownership</h3>
-              <p>
-                Each <a class="api-docs">NetworkIdentity</a> is owned by some
-                part of the network. The
-                <a class="api-docs">NetworkIdentity.OwnerId</a> property stores
-                the information about who is the current owner of the object,
-                indicating the id of the client that has control over the
-                object's state. By default, the value of
-                <a class="api-docs">NetworkIdentity.OwnerId</a> is -1,
-                indicating that the object is owned by the server. You can use
-                the
-                <a class="api-docs">NetworkIdentity.IsOwnedByClient</a> property
-                to check if the object is owned by a client or not.
-              </p>
-              <p>
-                The
-                <a class="api-docs">NetworkIdentity.HasAuthority</a> property is
-                used to check if the local environment (whether client, server,
-                or host) has authority to modify the object in question, where
-                some actions such as activating/deactivating or even changing
-                the owner of the object require authority.
-              </p>
-              <div class="language-csharp highlight">
-                <table class="highlighttable">
-                  <tr>
-                    <td class="linenos">
-                      <div class="linenodiv">
-                        <pre><span></span><span class="normal">1</span>
+
+<h1 id="components">Components</h1>
+<p>The image below presents a scheme with the main network components of <b class="netbuff">NetBuff</b>:</p>
+<p><img alt="Map" class="image" src="../img/components/map.png" /></p>
+<p>To develop your project, it is necessary to first understand the main functionalities of each part of the system. In the sections below, you can find information about each of the basic components.</p>
+<h2 id="network-manager">Network Manager</h2>
+<p>The <a class="api-docs">NetworkManager</a> component is the main component of the system, responsible for controlling the state of objects, packet delivery, and data synchronization between clients and the server, as well as controlling the initialization of network parts.</p>
+<p><img alt="Network Manager" class="image" src="../img/components/network_manager.png" /></p>
+<h2 id="network-manager-gui">Network Manager GUI</h2>
+<p>The <a class="api-docs">NetworkManagerGUI</a> component is created to facilitate initial system testing. It creates a user interface with basic controls as well as statistics about the current connection. It can plot graphs into the screen showing FPS, latency and packet incoming/outgoing rates.</p>
+<p><img alt="Network Manager GUI" class="image" src="../img/components/network_manager_gui.png" /></p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Using this component in a production environment is not recommended.</p>
+</div>
+<h2 id="network-identity">Network Identity</h2>
+<p>The <a class="api-docs">NetworkIdentity</a> component is used for the system to maintain references to objects in all network environments, that is, for the system to synchronize an object even on different machines. Every synchronized object needs to have a <a class="api-docs">NetworkIdentity</a>. In the inspector, the <a class="api-docs">NetworkId</a> of the identity is displayed, which is internally composed of 2 Int16 (totaling 32 bits), displayed as a string of 16 hexadecimal characters.</p>
+<p><img alt="Network Identity" class="image" src="../img/components/network_identity.png" /></p>
+<h3 id="ownership">Ownership</h3>
+<p>Each <a class="api-docs">NetworkIdentity</a> is owned by some part of the network. The <a class="api-docs">NetworkIdentity.OwnerId</a> property stores the information about who is the current owner of the object, indicating the id of the client that has control over the object's state. By default, the value of <a class="api-docs">NetworkIdentity.OwnerId</a> is -1, indicating that the object is owned by the server. You can use the <a class="api-docs">NetworkIdentity.IsOwnedByClient</a> property to check if the object is owned by a client or not.</p>
+<p>The <a class="api-docs">NetworkIdentity.HasAuthority</a> property is used to check if the local environment (whether client, server, or host) has authority to modify the object in question, where some actions such as activating/deactivating or even changing the owner of the object require authority.</p>
+<div class="language-csharp highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
 <span class="normal">5</span>
-<span class="normal">6</span></pre>
-                      </div>
-                    </td>
-                    <td class="code">
-                      <div>
-                        <pre><span></span><code><span id="__span-0-1"><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">HasAuthority</span><span class="p">)</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-1"><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">HasAuthority</span><span class="p">)</span>
 </span><span id="__span-0-2"><span class="w">    </span><span class="k">return</span><span class="p">;</span>
 </span><span id="__span-0-3">
 </span><span id="__span-0-4"><span class="c1">//Transfer the ownership back to the server</span>
 </span><span id="__span-0-5"><span class="k">if</span><span class="p">(</span><span class="n">Input</span><span class="p">.</span><span class="n">GetKeyDown</span><span class="p">(</span><span class="n">KeyCode</span><span class="p">.</span><span class="n">S</span><span class="p">))</span>
 </span><span id="__span-0-6"><span class="w">    </span><span class="n">SetOwner</span><span class="p">(</span><span class="o">-</span><span class="m">1</span><span class="p">);</span>
-</span></code></pre>
-                      </div>
-                    </td>
-                  </tr>
-                </table>
-              </div>
-              <div class="admonition tip">
-                <p class="admonition-title">Tip</p>
-                <p>
-                  Before performing any action on an object, remember to check
-                  the authority. In the case of a PlayerController, for example,
-                  only the owner of the object should have control over it.
-                </p>
-              </div>
-              <div class="admonition warning">
-                <p class="admonition-title">Warning</p>
-                <p>
-                  When a client disconnects from the server, all objects
-                  controlled by it (<a class="api-docs"
-                    >NetworkIdentity.GetNetworkObjectsOwnedBy</a
-                  >) are automatically despawned. You can use the
-                  <a class="api-docs">NetworkBehaviour.OnClientDisconnected</a>
-                  callback on the server to change the ownership of the object
-                  to avoid them being destroyed:
-                </p>
-                <div class="language-csharp highlight">
-                  <table class="highlighttable">
-                    <tr>
-                      <td class="linenos">
-                        <div class="linenodiv">
-                          <pre><span></span><span class="normal">1</span>
+</span></code></pre></div></td></tr></table></div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Before performing any action on an object, remember to check the authority. In the case of a PlayerController, for example, only the owner of the object should have control over it.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>When a client disconnects from the server, all objects controlled by it (<a class="api-docs">NetworkIdentity.GetNetworkObjectsOwnedBy</a>) are automatically despawned. You can use the <a class="api-docs">NetworkBehaviour.OnClientDisconnected</a> callback on the server to change the ownership of the object to avoid them being destroyed:</p>
+<div class="language-csharp highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
-<span class="normal">5</span></pre>
-                        </div>
-                      </td>
-                      <td class="code">
-                        <div>
-                          <pre><span></span><code><span id="__span-1-1"><span class="k">public</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">OnClientDisconnected</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">clientId</span><span class="p">)</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-1-1"><span class="k">public</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">OnClientDisconnected</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">clientId</span><span class="p">)</span>
 </span><span id="__span-1-2"><span class="p">{</span>
 </span><span id="__span-1-3"><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">clientId</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">OwnerId</span><span class="p">)</span>
 </span><span id="__span-1-4"><span class="w">        </span><span class="n">ForceSetOwner</span><span class="p">(</span><span class="o">-</span><span class="m">1</span><span class="p">);</span><span class="w"> </span><span class="c1">//Sets the owner even without authority (Server-Only)</span>
 </span><span id="__span-1-5"><span class="p">}</span>
-</span></code></pre>
-                        </div>
-                      </td>
-                    </tr>
-                  </table>
-                </div>
-              </div>
-              <h3 id="finding-objects">Finding Objects</h3>
-              <p>
-                There are several ways to locate a
-                <a class="api-docs">NetworkIdentity</a>, the main one being
-                using the <a class="api-docs">NetworkId</a> through the
-                <a class="api-docs">NetworkIdentity.GetNetworkObject</a> method.
-                It is also possible to use the
-                <a class="api-docs">NetworkIdentity.GetNetworkObjectsOwnedBy</a>
-                method to find all objects owned by a certain client, or the
-                <a class="api-docs">NetworkIdentity.GetNetworkObjects</a> method
-                to return all registered
-                <a class="api-docs">NetworkIdentity</a> objects.
-              </p>
-              <div class="admonition tip">
-                <p class="admonition-title">Tip</p>
-                <p>
-                  Calling the
-                  <a class="api-docs"
-                    >NetworkIdentity.GetNetworkObjectsOwnedBy</a
-                  >
-                  method with ownerId = -1, it is possible to find all objects
-                  owned by the server.
-                </p>
-              </div>
-              <h3 id="spawning-objects">Spawning Objects</h3>
-              <p>
-                You can spawn <a class="api-docs">NetworkIdentity</a> objects
-                using the <a class="api-docs">NetworkIdentity.Spawn</a> method
-                using the prefab. At the time of spawn, it is also possible to
-                configure the object in various ways:
-              </p>
-              <div class="language-csharp highlight">
-                <table class="highlighttable">
-                  <tr>
-                    <td class="linenos">
-                      <div class="linenodiv">
-                        <pre><span></span><span class="normal">1</span></pre>
-                      </div>
-                    </td>
-                    <td class="code">
-                      <div>
-                        <pre><span></span><code><span id="__span-2-1"><span class="n">Spawn</span><span class="p">(</span><span class="n">shotPrefab</span><span class="p">,</span><span class="w"> </span><span class="n">cameraTransform</span><span class="p">.</span><span class="n">position</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">cameraTransform</span><span class="p">.</span><span class="n">forward</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="n">cameraTransform</span><span class="p">.</span><span class="n">rotation</span><span class="p">,</span><span class="w"> </span><span class="n">Vector3</span><span class="p">.</span><span class="n">one</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="m">0.5f</span><span class="p">,</span><span class="w"> </span><span class="k">true</span><span class="p">);</span>
-</span></code></pre>
-                      </div>
-                    </td>
-                  </tr>
-                </table>
-              </div>
-              <p>
-                You can check which prefab was used to spawn an object by
-                accessing the
-                <a class="api-docs">NetworkIdentity.PrefabId</a> property. If an
-                object was created in real-time, this value will be different
-                from <a class="api-docs">NetworkId.Empty</a>. Pre-existing
-                objects (created in the editor), even if they originated from a
-                registered prefab, will not have a reference to the prefab.
-              </p>
-              <div class="admonition tip">
-                <p class="admonition-title">Tip</p>
-                <p>
-                  When you spawn an object, you can choose who will own the
-                  object. If the field is omitted, the default value is -1,
-                  meaning the ownership of the
-                  <a class="api-docs">NetworkIdentity</a> will be of the server.
-                </p>
-              </div>
-              <div class="admonition tip">
-                <p class="admonition-title">Tip</p>
-                <p>
-                  When you spawn an object, you can choose in which scene the
-                  object will appear. If the field is omitted, the default value
-                  is -1, meaning the object will go to the last loaded scene.
-                  See the
-                  <a href="/scene_management">Scene Management</a> section for
-                  more information.
-                </p>
-              </div>
-              <div class="admonition warning">
-                <p class="admonition-title">Warning</p>
-                <p>
-                  Remember to register your prefabs in the
-                  <a class="api-docs">NetworkPrefabRegistry</a>, otherwise, the
-                  system will not be able to spawn objects remotely. If the
-                  prefab is not registered, an error will occur. You can use the
-                  editor tool located in the
-                  <strong>NetBuff/Check Prefab Registries</strong> menu to check
-                  if there is any problem with your
-                  <a class="api-docs">NetworkPrefabRegistry</a>.
-                </p>
-              </div>
-              <h3 id="despawning-objects">Despawning Objects</h3>
-              <p>
-                To despawn an object, simply use the
-                <a class="api-docs">NetworkIdentity.Despawn</a> method. It is
-                only possible to remove an object if the local server/client has
-                authority over the object. If necessary, the server can use the
-                <a class="api-docs">NetworkIdentity.ForceSetOwner</a> method
-                first to gain permission to despawn the object.
-              </p>
-              <div class="language-csharp highlight">
-                <table class="highlighttable">
-                  <tr>
-                    <td class="linenos">
-                      <div class="linenodiv">
-                        <pre><span></span><span class="normal">1</span>
-<span class="normal">2</span></pre>
-                      </div>
-                    </td>
-                    <td class="code">
-                      <div>
-                        <pre><span></span><code><span id="__span-3-1"><span class="n">ForceSetOwner</span><span class="p">(</span><span class="o">-</span><span class="m">1</span><span class="p">);</span>
+</span></code></pre></div></td></tr></table></div>
+</div>
+<h3 id="finding-objects">Finding Objects</h3>
+<p>There are several ways to locate a <a class="api-docs">NetworkIdentity</a>, the main one being using the <a class="api-docs">NetworkId</a> through the <a class="api-docs">NetworkIdentity.GetNetworkObject</a> method. It is also possible to use the <a class="api-docs">NetworkIdentity.GetNetworkObjectsOwnedBy</a> method to find all objects owned by a certain client, or the <a class="api-docs">NetworkIdentity.GetNetworkObjects</a> method to return all registered <a class="api-docs">NetworkIdentity</a> objects.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Calling the <a class="api-docs">NetworkIdentity.GetNetworkObjectsOwnedBy</a> method with ownerId = -1, it is possible to find all objects owned by the server.</p>
+</div>
+<h3 id="spawning-objects">Spawning Objects</h3>
+<p>You can spawn <a class="api-docs">NetworkIdentity</a> objects using the <a class="api-docs">NetworkIdentity.Spawn</a> method using the prefab. At the time of spawn, it is also possible to configure the object in various ways:</p>
+<div class="language-csharp highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-2-1"><span class="n">Spawn</span><span class="p">(</span><span class="n">shotPrefab</span><span class="p">,</span><span class="w"> </span><span class="n">cameraTransform</span><span class="p">.</span><span class="n">position</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">cameraTransform</span><span class="p">.</span><span class="n">forward</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="n">cameraTransform</span><span class="p">.</span><span class="n">rotation</span><span class="p">,</span><span class="w"> </span><span class="n">Vector3</span><span class="p">.</span><span class="n">one</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="m">0.5f</span><span class="p">,</span><span class="w"> </span><span class="k">true</span><span class="p">);</span>
+</span></code></pre></div></td></tr></table></div>
+<p>You can check which prefab was used to spawn an object by accessing the <a class="api-docs">NetworkIdentity.PrefabId</a> property. If an object was created in real-time, this value will be different from <a class="api-docs">NetworkId.Empty</a>. Pre-existing objects (created in the editor), even if they originated from a registered prefab, will not have a reference to the prefab.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>When you spawn an object, you can choose who will own the object. If the field is omitted, the default value is -1, meaning the ownership of the <a class="api-docs">NetworkIdentity</a> will be of the server.</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>When you spawn an object, you can choose in which scene the object will appear. If the field is omitted, the default value is -1, meaning the object will go to the last loaded scene. See the <a href="/scene_management">Scene Management</a> section for more information.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Remember to register your prefabs in the <a class="api-docs">NetworkPrefabRegistry</a>, otherwise, the system will not be able to spawn objects remotely. If the prefab is not registered, an error will occur. You can use the editor tool located in the <strong>NetBuff/Check Prefab Registries</strong> menu to check if there is any problem with your <a class="api-docs">NetworkPrefabRegistry</a>.</p>
+</div>
+<h3 id="despawning-objects">Despawning Objects</h3>
+<p>To despawn an object, simply use the <a class="api-docs">NetworkIdentity.Despawn</a> method. It is only possible to remove an object if the local server/client has authority over the object. If necessary, the server can use the <a class="api-docs">NetworkIdentity.ForceSetOwner</a> method first to gain permission to despawn the object.</p>
+<div class="language-csharp highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-3-1"><span class="n">ForceSetOwner</span><span class="p">(</span><span class="o">-</span><span class="m">1</span><span class="p">);</span>
 </span><span id="__span-3-2"><span class="n">Despawn</span><span class="p">();</span>
-</span></code></pre>
-                      </div>
-                    </td>
-                  </tr>
-                </table>
-              </div>
-              <h3 id="activating-deactivating-objects">
-                Activating / Deactivating Objects
-              </h3>
-              <p>
-                During an object's existence, it's also possible to change its
-                activation state using the method
-                <a class="api-docs">NetworkIdentity.SetActive</a>. Changing an
-                object's activation state is only possible if the local
-                server/client has authority over the object. If necessary, the
-                server can use the method
-                <a class="api-docs">NetworkIdentity.ForceSetOwner</a> beforehand
-                to gain permission to despawn the object.
-              </p>
-              <div class="language-csharp highlight">
-                <table class="highlighttable">
-                  <tr>
-                    <td class="linenos">
-                      <div class="linenodiv">
-                        <pre><span></span><span class="normal">1</span>
-<span class="normal">2</span></pre>
-                      </div>
-                    </td>
-                    <td class="code">
-                      <div>
-                        <pre><span></span><code><span id="__span-4-1"><span class="n">ForceSetOwner</span><span class="p">(</span><span class="o">-</span><span class="m">1</span><span class="p">);</span>
+</span></code></pre></div></td></tr></table></div>
+<h3 id="activating-deactivating-objects">Activating / Deactivating Objects</h3>
+<p>During an object's existence, it's also possible to change its activation state using the method <a class="api-docs">NetworkIdentity.SetActive</a>. Changing an object's activation state is only possible if the local server/client has authority over the object. If necessary, the server can use the method <a class="api-docs">NetworkIdentity.ForceSetOwner</a> beforehand to gain permission to despawn the object.</p>
+<div class="language-csharp highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-4-1"><span class="n">ForceSetOwner</span><span class="p">(</span><span class="o">-</span><span class="m">1</span><span class="p">);</span>
 </span><span id="__span-4-2"><span class="n">SetActive</span><span class="p">(</span><span class="k">true</span><span class="p">);</span>
-</span></code></pre>
-                      </div>
-                    </td>
-                  </tr>
-                </table>
-              </div>
-              <h2 id="network-prefab-registry">Network Prefab Registry</h2>
-              <p>
-                For <b class="netbuff">NetBuff</b> to be able to spawn objects
-                over the network, it's necessary to maintain references to
-                prefabs between clients and the server. Therefore, all prefabs
-                that will be used to spawn objects in real-time (players,
-                enemies, projectiles, etc.) must be registered in a
-                <a class="api-docs">NetworkPrefabRegistry</a>, which should be
-                referenced in the <a class="api-docs">NetworkManager</a>.
-                Through the
-                <a class="api-docs">NetworkManager.PrefabRegistry</a> property,
-                you can reference which
-                <a class="api-docs">NetworkPrefabRegistry</a> is being used.
-              </p>
-              <p>
-                <img
-                  alt="Network Prefab Registry"
-                  class="image"
-                  src="../img/components/network_prefab_registry.png"
-                />
-              </p>
-              <div class="admonition tip">
-                <p class="admonition-title">Tip</p>
-                <p>
-                  You can use the editor tool located in the
-                  <strong>NetBuff/Check Prefab Registries</strong> menu to check
-                  if there are any issues with your
-                  <a class="api-docs">NetworkPrefabRegistry</a>.
-                </p>
-              </div>
-              <h2 id="network-behaviour">Network Behaviour</h2>
-              <p>
-                The <a class="api-docs">NetworkBehaviour</a> component serves as
-                the basis for all other network components that are attached to
-                a <a class="api-docs">NetworkIdentity</a>. They are primarily
-                responsible for synchronizing an object's state and
-                handling/controlling its behaviors. Unlike normal
-                MonoBehaviours, they cannot be added/removed in real-time. Much
-                of the logic in a project created using
-                <b class="netbuff">NetBuff</b> will be contained in components
-                implemented using <a class="api-docs">NetworkBehaviour</a> as a
-                base.
-              </p>
-              <p>
-                <img
-                  alt="Network Behaviour"
-                  class="image"
-                  src="img/components/network_behaviour.png"
-                />
-              </p>
-              <div class="admonition tip">
-                <p class="admonition-title">Tip</p>
-                <p>
-                  All properties and methods of the
-                  <a class="api-docs">NetworkIdentity</a> class have an
-                  interface in the
-                  <a class="api-docs">NetworkBehaviour</a> class to facilitate
-                  development.
-                </p>
-                <div class="language-csharp highlight">
-                  <table class="highlighttable">
-                    <tr>
-                      <td class="linenos">
-                        <div class="linenodiv">
-                          <pre><span></span><span class="normal"> 1</span>
+</span></code></pre></div></td></tr></table></div>
+<h2 id="network-prefab-registry">Network Prefab Registry</h2>
+<p>For <b class="netbuff">NetBuff</b> to be able to spawn objects over the network, it's necessary to maintain references to prefabs between clients and the server. Therefore, all prefabs that will be used to spawn objects in real-time (players, enemies, projectiles, etc.) must be registered in a <a class="api-docs">NetworkPrefabRegistry</a>, which should be referenced in the <a class="api-docs">NetworkManager</a>. Through the <a class="api-docs">NetworkManager.PrefabRegistry</a> property, you can reference which <a class="api-docs">NetworkPrefabRegistry</a> is being used.</p>
+<p><img alt="Network Prefab Registry" class="image" src="../img/components/network_prefab_registry.png" /></p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>You can use the editor tool located in the <strong>NetBuff/Check Prefab Registries</strong> menu to check if there are any issues with your <a class="api-docs">NetworkPrefabRegistry</a>.</p>
+</div>
+<h2 id="network-behaviour">Network Behaviour</h2>
+<p>The <a class="api-docs">NetworkBehaviour</a> component serves as the basis for all other network components that are attached to a <a class="api-docs">NetworkIdentity</a>. They are primarily responsible for synchronizing an object's state and handling/controlling its behaviors. Unlike normal MonoBehaviours, they cannot be added/removed in real-time. Much of the logic in a project created using <b class="netbuff">NetBuff</b> will be contained in components implemented using <a class="api-docs">NetworkBehaviour</a> as a base.</p>
+<p><img alt="Network Behaviour" class="image" src="img/components/network_behaviour.png" /></p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>All properties and methods of the <a class="api-docs">NetworkIdentity</a> class have an interface in the <a class="api-docs">NetworkBehaviour</a> class to facilitate development.</p>
+<div class="language-csharp highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -1082,12 +1061,7 @@
 <span class="normal"> 8</span>
 <span class="normal"> 9</span>
 <span class="normal">10</span>
-<span class="normal">11</span></pre>
-                        </div>
-                      </td>
-                      <td class="code">
-                        <div>
-                          <pre><span></span><code><span id="__span-5-1"><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">MyNetworkBehaviour</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">NetworkBehaviour</span>
+<span class="normal">11</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-5-1"><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">MyNetworkBehaviour</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">NetworkBehaviour</span>
 </span><span id="__span-5-2"><span class="p">{</span>
 </span><span id="__span-5-3"><span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">MyMethod</span><span class="p">()</span>
 </span><span id="__span-5-4"><span class="w">    </span><span class="p">{</span>
@@ -1098,123 +1072,42 @@
 </span><span id="__span-5-9"><span class="w">        </span><span class="n">SetActive</span><span class="p">(</span><span class="k">false</span><span class="p">);</span>
 </span><span id="__span-5-10"><span class="w">    </span><span class="p">}</span>
 </span><span id="__span-5-11"><span class="p">}</span>
-</span></code></pre>
-                        </div>
-                      </td>
-                    </tr>
-                  </table>
-                </div>
-              </div>
-              <p>
-                Some <a class="api-docs">NetworkBehaviour</a> are already
-                implemented by default:
-              </p>
-              <h3 id="network-transform">Network Transform</h3>
-              <p>
-                The <a class="api-docs">NetworkTransform</a> component is used
-                to synchronize the state of a <strong>transform</strong> over
-                the network. You can set the update rate and which components
-                will be updated, reducing the required data transfer rate.
-              </p>
-              <p>
-                <img
-                  alt="Network Transform"
-                  class="image"
-                  src="../img/components/network_transform.png"
-                />
-              </p>
-              <div class="admonition warning">
-                <p class="admonition-title">Warning</p>
-                <p>
-                  Changing which fields will be synchronized (i.e.,
-                  <a class="api-docs">NetworkTransform.SyncModeMask</a>) should
-                  not be done in real-time.
-                </p>
-              </div>
-              <h3 id="network-rigidbody-transform">
-                Network Rigidbody Transform
-              </h3>
-              <p>
-                The <a class="api-docs">NetworkRigidbodyTransform</a> component
-                functions similarly to the
-                <a class="api-docs">NetworkTransform</a> component but also
-                synchronizes the object's velocity, angular velocity, and the
-                <strong>Rigidbody.IsKinematic</strong> property, improving the
-                synchronization of physics-enabled objects.
-              </p>
-              <p>
-                <img
-                  alt="Network Rigidbody Transform"
-                  class="image"
-                  src="../img/components/network_rigidbody_transform.png"
-                />
-              </p>
-              <div class="admonition warning">
-                <p class="admonition-title">Warning</p>
-                <p>
-                  Changing which fields will be synchronized (i.e.,
-                  <a class="api-docs">NetworkTransform.SyncModeMask</a>) should
-                  not be done in real-time.
-                </p>
-              </div>
-              <h3 id="network-animator">Network Animator</h3>
-              <p>
-                The <a class="api-docs">NetworkAnimator</a> component is used to
-                synchronize the state of an <strong>Animator</strong>, including
-                its parameters, layer weights, and animation/transition times.
-              </p>
-              <p>
-                <img
-                  alt="Network Animator"
-                  class="image"
-                  src="../img/components/network_animator.png"
-                />
-              </p>
-              <div class="admonition warning">
-                <p class="admonition-title">Warning</p>
-                <p>
-                  Due to the functioning of the
-                  <strong>Animator.SetTrigger</strong> function, automatic
-                  synchronization is not possible. Use the
-                  <a class="api-docs">NetworkAnimator.SetTrigger</a> method to
-                  properly synchronize the state.
-                </p>
-              </div>
-              <h2 id="network-value">Network Value</h2>
-              <p>
-                The simplest way to customize the states of a
-                <a class="api-docs">NetworkBehaviour</a> is by using a
-                <a class="api-docs">NetworkValue</a> attached to it:
-              </p>
-              <p>
-                <img
-                  alt="Network Value"
-                  class="image"
-                  src="../img/components/network_value.png"
-                />
-              </p>
-              <div class="admonition tip">
-                <p class="admonition-title">Tip</p>
-                <p>
-                  All
-                  <a href="/api_reference#networkvalue">NetworkValues</a> have a
-                  yellow name in the inspector to make differentiation easier.
-                </p>
-              </div>
-              <div class="admonition tip">
-                <p class="admonition-title">Tip</p>
-                <p>
-                  For testing purposes, you can change the value of any
-                  <a class="api-docs">NetworkValue</a> through the inspector,
-                  even without having authority.
-                </p>
-              </div>
-              <div class="language-csharp highlight">
-                <table class="highlighttable">
-                  <tr>
-                    <td class="linenos">
-                      <div class="linenodiv">
-                        <pre><span></span><span class="normal"> 1</span>
+</span></code></pre></div></td></tr></table></div>
+</div>
+<p>Some <a class="api-docs">NetworkBehaviour</a> are already implemented by default:</p>
+<h3 id="network-transform">Network Transform</h3>
+<p>The <a class="api-docs">NetworkTransform</a> component is used to synchronize the state of a <strong>transform</strong> over the network. You can set the update rate and which components will be updated, reducing the required data transfer rate.</p>
+<p><img alt="Network Transform" class="image" src="../img/components/network_transform.png" /></p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Changing which fields will be synchronized (i.e., <a class="api-docs">NetworkTransform.SyncModeMask</a>) should not be done in real-time.</p>
+</div>
+<h3 id="network-rigidbody-transform">Network Rigidbody Transform</h3>
+<p>The <a class="api-docs">NetworkRigidbodyTransform</a> component functions similarly to the <a class="api-docs">NetworkTransform</a> component but also synchronizes the object's velocity, angular velocity, and the <strong>Rigidbody.IsKinematic</strong> property, improving the synchronization of physics-enabled objects.</p>
+<p><img alt="Network Rigidbody Transform" class="image" src="../img/components/network_rigidbody_transform.png" /></p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Changing which fields will be synchronized (i.e., <a class="api-docs">NetworkTransform.SyncModeMask</a>) should not be done in real-time.</p>
+</div>
+<h3 id="network-animator">Network Animator</h3>
+<p>The <a class="api-docs">NetworkAnimator</a> component is used to synchronize the state of an <strong>Animator</strong>, including its parameters, layer weights, and animation/transition times.</p>
+<p><img alt="Network Animator" class="image" src="../img/components/network_animator.png" /></p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Due to the functioning of the <strong>Animator.SetTrigger</strong> function, automatic synchronization is not possible. Use the <a class="api-docs">NetworkAnimator.SetTrigger</a> method to properly synchronize the state.</p>
+</div>
+<h2 id="network-value">Network Value</h2>
+<p>The simplest way to customize the states of a <a class="api-docs">NetworkBehaviour</a> is by using a <a class="api-docs">NetworkValue</a> attached to it:</p>
+<p><img alt="Network Value" class="image" src="../img/components/network_value.png" /></p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>All <a href="/api_reference#networkvalue">NetworkValues</a> have a yellow name in the inspector to make differentiation easier.</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>For testing purposes, you can change the value of any <a class="api-docs">NetworkValue</a> through the inspector, even without having authority.</p>
+</div>
+<div class="language-csharp highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -1236,12 +1129,7 @@
 <span class="normal">20</span>
 <span class="normal">21</span>
 <span class="normal">22</span>
-<span class="normal">23</span></pre>
-                      </div>
-                    </td>
-                    <td class="code">
-                      <div>
-                        <pre><span></span><code><span id="__span-6-1"><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">CustomBehaviour</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">NetworkBehaviour</span>
+<span class="normal">23</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-6-1"><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">CustomBehaviour</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">NetworkBehaviour</span>
 </span><span id="__span-6-2"><span class="p">{</span>
 </span><span id="__span-6-3"><span class="w">    </span><span class="c1">//Only the NetworkIdentity owner can modify this value</span>
 </span><span id="__span-6-4"><span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="n">ColorNetworkValue</span><span class="w"> </span><span class="n">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ColorNetworkValue</span><span class="p">(</span><span class="n">Color</span><span class="p">.</span><span class="n">white</span><span class="p">);</span>
@@ -1264,58 +1152,29 @@
 </span><span id="__span-6-21"><span class="w">            </span><span class="n">team</span><span class="p">.</span><span class="n">Value</span><span class="w"> </span><span class="o">++</span><span class="p">;</span><span class="w">   </span>
 </span><span id="__span-6-22"><span class="w">    </span><span class="p">}</span>
 </span><span id="__span-6-23"><span class="p">}</span>
-</span></code></pre>
-                      </div>
-                    </td>
-                  </tr>
-                </table>
-              </div>
-              <h3 id="supported-types">Supported Types</h3>
-              <p>
-                Below is a list of all supported types of
-                <a class="api-docs">NetworkValue</a> by default:
-              </p>
-              <ul>
-                <li><a href="/api_reference#boolnetworkvalue">Bool</a></li>
-                <li><a href="/api_reference#bytenetworkvalue">Byte</a></li>
-                <li><a href="/api_reference#intnetworkvalue">Int</a></li>
-                <li><a href="/api_reference#floatnetworkvalue">Float</a></li>
-                <li><a href="/api_reference#doublenetworkvalue">Double</a></li>
-                <li><a href="/api_reference#longnetworkvalue">Long</a></li>
-                <li><a href="/api_reference#shortnetworkvalue">Short</a></li>
-                <li><a href="/api_reference#stringnetworkvalue">String</a></li>
-                <li>
-                  <a href="/api_reference#vector2networkvalue">Vector2</a>
-                </li>
-                <li>
-                  <a href="/api_reference#vector3networkvalue">Vector3</a>
-                </li>
-                <li>
-                  <a href="/api_reference#vector4networkvalue">Vector4</a>
-                </li>
-                <li>
-                  <a href="/api_reference#quaternionnetworkvalue">Quaternion</a>
-                </li>
-                <li><a href="/api_reference#colornetworkvalue">Color</a></li>
-                <li>
-                  <a href="/api_reference#color32networkvalue">Color32</a>
-                </li>
-                <li>
-                  <a href="/api_reference#networkidnetworkvalue">NetworkId</a>
-                </li>
-              </ul>
-              <h3 id="custom-type-support">Custom Type Support</h3>
-              <p>
-                If necessary, you can implement your own
-                <a class="api-docs">NetworkValue</a>. In the following example,
-                we can see the implementation of a FloatArrayNetworkValue:
-              </p>
-              <div class="language-csharp highlight">
-                <table class="highlighttable">
-                  <tr>
-                    <td class="linenos">
-                      <div class="linenodiv">
-                        <pre><span></span><span class="normal"> 1</span>
+</span></code></pre></div></td></tr></table></div>
+<h3 id="supported-types">Supported Types</h3>
+<p>Below is a list of all supported types of <a class="api-docs">NetworkValue</a> by default:</p>
+<ul>
+<li><a href="/api_reference#boolnetworkvalue">Bool</a></li>
+<li><a href="/api_reference#bytenetworkvalue">Byte</a></li>
+<li><a href="/api_reference#intnetworkvalue">Int</a></li>
+<li><a href="/api_reference#floatnetworkvalue">Float</a></li>
+<li><a href="/api_reference#doublenetworkvalue">Double</a></li>
+<li><a href="/api_reference#longnetworkvalue">Long</a></li>
+<li><a href="/api_reference#shortnetworkvalue">Short</a></li>
+<li><a href="/api_reference#stringnetworkvalue">String</a></li>
+<li><a href="/api_reference#vector2networkvalue">Vector2</a></li>
+<li><a href="/api_reference#vector3networkvalue">Vector3</a></li>
+<li><a href="/api_reference#vector4networkvalue">Vector4</a></li>
+<li><a href="/api_reference#quaternionnetworkvalue">Quaternion</a></li>
+<li><a href="/api_reference#colornetworkvalue">Color</a></li>
+<li><a href="/api_reference#color32networkvalue">Color32</a> </li>
+<li><a href="/api_reference#networkidnetworkvalue">NetworkId</a></li>
+</ul>
+<h3 id="custom-type-support">Custom Type Support</h3>
+<p>If necessary, you can implement your own <a class="api-docs">NetworkValue</a>. In the following example, we can see the implementation of a FloatArrayNetworkValue:</p>
+<div class="language-csharp highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -1338,12 +1197,7 @@
 <span class="normal">21</span>
 <span class="normal">22</span>
 <span class="normal">23</span>
-<span class="normal">24</span></pre>
-                      </div>
-                    </td>
-                    <td class="code">
-                      <div>
-                        <pre><span></span><code><span id="__span-7-1"><span class="na">[Serializable]</span>
+<span class="normal">24</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-7-1"><span class="na">[Serializable]</span>
 </span><span id="__span-7-2"><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">FloatArrayNetworkVariable</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">NetworkValue</span><span class="o">&lt;</span><span class="kt">float</span><span class="p">[]</span><span class="o">&gt;</span>
 </span><span id="__span-7-3"><span class="p">{</span>
 </span><span id="__span-7-4"><span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="nf">FloatArrayNetworkVariable</span><span class="p">(</span><span class="kt">float</span><span class="p">[]</span><span class="w"> </span><span class="n">defaultValue</span><span class="p">,</span><span class="w"> </span><span class="n">ModifierType</span><span class="w"> </span><span class="n">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ModifierType</span><span class="p">.</span><span class="n">OwnerOnly</span><span class="p">)</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="k">base</span><span class="p">(</span><span class="n">defaultValue</span><span class="p">,</span><span class="w"> </span><span class="n">type</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
@@ -1367,31 +1221,10 @@
 </span><span id="__span-7-22"><span class="p">{</span>
 </span><span id="__span-7-23"><span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="n">FloatArrayNetworkVariable</span><span class="w"> </span><span class="n">justAValue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">FloatArrayNetworkVariable</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="kt">float</span><span class="p">[</span><span class="m">10</span><span class="p">]);</span>
 </span><span id="__span-7-24"><span class="p">}</span>
-</span></code></pre>
-                      </div>
-                    </td>
-                  </tr>
-                </table>
-              </div>
-              <h3 id="listening-for-changes">Listening For Changes</h3>
-              <p>
-                To facilitate, the
-                <a href="/api_reference/#networkvaluet"
-                  >NetworkValue&lt;T&gt;</a
-                >
-                class has the <b>OnValueChanged</b> callback, which is called
-                when the value of the
-                <a class="api-docs">NetworkValue</a> changes (locally or
-                externally), which is useful for creating reactive systems, such
-                as a point counter on the screen that should update whenever the
-                number of points changes.
-              </p>
-              <div class="language-csharp highlight">
-                <table class="highlighttable">
-                  <tr>
-                    <td class="linenos">
-                      <div class="linenodiv">
-                        <pre><span></span><span class="normal"> 1</span>
+</span></code></pre></div></td></tr></table></div>
+<h3 id="listening-for-changes">Listening For Changes</h3>
+<p>To facilitate, the <a href="/api_reference/#networkvaluet">NetworkValue&lt;T&gt;</a> class has the <b>OnValueChanged</b> callback, which is called when the value of the <a class="api-docs">NetworkValue</a> changes (locally or externally), which is useful for creating reactive systems, such as a point counter on the screen that should update whenever the number of points changes.</p>
+<div class="language-csharp highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -1405,12 +1238,7 @@
 <span class="normal">12</span>
 <span class="normal">13</span>
 <span class="normal">14</span>
-<span class="normal">15</span></pre>
-                      </div>
-                    </td>
-                    <td class="code">
-                      <div>
-                        <pre><span></span><code><span id="__span-8-1"><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">PlayerController</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">NetworkBehaviour</span>
+<span class="normal">15</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-8-1"><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">PlayerController</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">NetworkBehaviour</span>
 </span><span id="__span-8-2"><span class="p">{</span>
 </span><span id="__span-8-3"><span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="n">StringNetworkValue</span><span class="w"> </span><span class="n">nickname</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">StringNetworkValue</span><span class="p">(</span><span class="s">&quot;&quot;</span><span class="p">);</span>
 </span><span id="__span-8-4"><span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="n">TMP_Text</span><span class="w"> </span><span class="n">headPlate</span><span class="p">;</span>
@@ -1425,106 +1253,76 @@
 </span><span id="__span-8-13"><span class="w">        </span><span class="p">};</span>
 </span><span id="__span-8-14"><span class="w">    </span><span class="p">}</span><span class="w"> </span>
 </span><span id="__span-8-15"><span class="p">}</span>
-</span></code></pre>
-                      </div>
-                    </td>
-                  </tr>
-                </table>
-              </div>
-              <h3 id="modifier-type">Modifier Type</h3>
-              <p>
-                Each <a class="api-docs">NetworkValue</a> can have its own
-                modification permissions, regardless of the ownership of the
-                <a class="api-docs">NetworkIdentity</a> of the object.
-              </p>
-              <div class="language-csharp highlight">
-                <table class="highlighttable">
-                  <tr>
-                    <td class="linenos">
-                      <div class="linenodiv">
-                        <pre><span></span><span class="normal">1</span>
+</span></code></pre></div></td></tr></table></div>
+<h3 id="modifier-type">Modifier Type</h3>
+<p>Each <a class="api-docs">NetworkValue</a> can have its own modification permissions, regardless of the ownership of the <a class="api-docs">NetworkIdentity</a> of the object.</p>
+<div class="language-csharp highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
-<span class="normal">5</span></pre>
-                      </div>
-                    </td>
-                    <td class="code">
-                      <div>
-                        <pre><span></span><code><span id="__span-9-1"><span class="c1">//Only the NetworkIdentity owner can modify this value</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-9-1"><span class="c1">//Only the NetworkIdentity owner can modify this value</span>
 </span><span id="__span-9-2"><span class="k">public</span><span class="w"> </span><span class="n">ColorNetworkValue</span><span class="w"> </span><span class="n">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ColorNetworkValue</span><span class="p">(</span><span class="n">Color</span><span class="p">.</span><span class="n">white</span><span class="p">);</span>
 </span><span id="__span-9-3">
 </span><span id="__span-9-4"><span class="c1">//Only the server can modify this value</span>
 </span><span id="__span-9-5"><span class="k">public</span><span class="w"> </span><span class="n">IntNetworkValue</span><span class="w"> </span><span class="n">team</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">IntNetworkValue</span><span class="p">(</span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="n">NetworkValue</span><span class="p">.</span><span class="n">ModifierType</span><span class="p">.</span><span class="n">Server</span><span class="p">);</span>
-</span></code></pre>
-                      </div>
-                    </td>
-                  </tr>
-                </table>
-              </div>
-              <div class="admonition warning">
-                <p class="admonition-title">Warning</p>
-                <p>
-                  Do not change the modification permissions of a variable in
-                  real-time. If necessary, set it to
-                  <a class="api-docs">ModifierType.Everybody</a>.
-                </p>
-              </div>
-            </article>
-          </div>
+</span></code></pre></div></td></tr></table></div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Do not change the modification permissions of a variable in real-time. If necessary, set it to <a class="api-docs">ModifierType.Everybody</a>.</p>
+</div>
 
-          <script>
-            var target = document.getElementById(location.hash.slice(1));
-            target &&
-              target.name &&
-              (target.checked = target.name.startsWith("__tabbed_"));
-          </script>
-        </div>
-      </main>
 
-      <footer class="md-footer">
-        <div class="md-footer-meta md-typeset">
-          <div class="md-footer-meta__inner md-grid">
-            <div class="md-copyright">
-              Made with
-              <a
-                href="https://squidfunk.github.io/mkdocs-material/"
-                target="_blank"
-                rel="noopener"
-              >
-                Material for MkDocs
-              </a>
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
             </div>
-          </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
         </div>
-      </footer>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
     </div>
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-
-    <script id="__config" type="application/json">
-      {
-        "base": "..",
-        "features": ["content.code.select", "content.code.copy"],
-        "search": "../assets/javascripts/workers/search.b8dbb3d2.min.js",
-        "translations": {
-          "clipboard.copied": "Copied to clipboard",
-          "clipboard.copy": "Copy to clipboard",
-          "search.result.more.one": "1 more on this page",
-          "search.result.more.other": "# more on this page",
-          "search.result.none": "No matching documents",
-          "search.result.one": "1 matching document",
-          "search.result.other": "# matching documents",
-          "search.result.placeholder": "Type to start searching",
-          "search.result.term.missing": "Missing",
-          "select.version": "Select version"
-        }
-      }
-    </script>
-
-    <script src="../assets/javascripts/bundle.3220b9d7.min.js"></script>
-
-    <script src="../js/auto_link.js"></script>
+    
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["content.code.select", "content.code.copy"], "search": "../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.3220b9d7.min.js"></script>
+      
+        <script src="../js/auto_link.js"></script>
+      
+    
   </body>
 </html>

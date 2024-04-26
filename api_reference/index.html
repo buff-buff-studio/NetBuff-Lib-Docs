@@ -5707,7 +5707,7 @@
 <td>Represents the changes that have been made to the Animator.<br></td>
 </tr>
 <tr>
-<td><span class="api-prop-modifiers">public</span> <span class="api-prop-type">LayerInfo[]</span> <span class="api-prop-name" id="animatorsyncpacket-layers">Layers</span></td>
+<td><span class="api-prop-modifiers">public</span> <span class="api-prop-type"><a href="#layerinfo">LayerInfo[]</a></span> <span class="api-prop-name" id="animatorsyncpacket-layers">Layers</span></td>
 <td><span class="api-prop-getter">Get</span> <span class="api-prop-setter">Set</span></td>
 <td>Holds information about the layers that have been changed.<br></td>
 </tr>
@@ -5722,7 +5722,7 @@
 <td>The amount of parameters that have been changed.<br></td>
 </tr>
 <tr>
-<td><span class="api-prop-modifiers">public</span> <span class="api-prop-type">byte[]</span> <span class="api-prop-name" id="animatorsyncpacket-parameterdata">ParameterData</span></td>
+<td><span class="api-prop-modifiers">public</span> <span class="api-prop-type"><span class="api-internal-type">byte[]</span></span> <span class="api-prop-name" id="animatorsyncpacket-parameterdata">ParameterData</span></td>
 <td><span class="api-prop-getter">Get</span> <span class="api-prop-setter">Set</span></td>
 <td>Holds the data of the parameters that have been changed.<br></td>
 </tr>
@@ -7113,7 +7113,7 @@
 </tr>
 <tr>
 <td><span class="api-method-modifiers">public</span> <span class="api-method-type">void</span> <span class="api-method-name" id="networkbehaviour-withvalues">WithValues</span></td>
-<td><span class="api-method-param-type">NetworkValue[]</span> <span class="api-method-param-name">values</span></td>
+<td><span class="api-method-param-type"><a href="#networkvalue">NetworkValue[]</a></span> <span class="api-method-param-name">values</span></td>
 <td>Attaches the given values to this behaviour.<br>Shall not be called after the behaviour is spawned.<br></td>
 </tr>
 <tr>
@@ -7138,7 +7138,7 @@
 </tr>
 <tr>
 <td><span class="api-method-modifiers">public</span> <span class="api-method-type">void</span> <span class="api-method-name" id="networkbehaviour-applydirtyvalues">ApplyDirtyValues</span></td>
-<td><span class="api-method-param-type">byte[]</span> <span class="api-method-param-name">payload</span></td>
+<td><span class="api-method-param-type"><span class="api-internal-type">byte[]</span></span> <span class="api-method-param-name">payload</span></td>
 <td>Applies the given payload to the values of this behaviour.<br>used to synchronize the values of this behaviour from the network.<br></td>
 </tr>
 <tr>
@@ -7330,7 +7330,7 @@
 <td>The behaviour id of the network behaviour (index in the network object).<br></td>
 </tr>
 <tr>
-<td><span class="api-prop-modifiers">public</span> <span class="api-prop-type">byte[]</span> <span class="api-prop-name" id="networkbehaviourdatapacket-payload">Payload</span></td>
+<td><span class="api-prop-modifiers">public</span> <span class="api-prop-type"><span class="api-internal-type">byte[]</span></span> <span class="api-prop-name" id="networkbehaviourdatapacket-payload">Payload</span></td>
 <td><span class="api-prop-getter">Get</span> <span class="api-prop-setter">Set</span></td>
 <td>The payload of the network behaviour data.<br></td>
 </tr>
@@ -7570,7 +7570,7 @@
 <td>The name of the currently last loaded scene.<br></td>
 </tr>
 <tr>
-<td><span class="api-prop-modifiers">public</span> <span class="api-prop-type">NetworkBehaviour[]</span> <span class="api-prop-name" id="networkidentity-behaviours">Behaviours</span></td>
+<td><span class="api-prop-modifiers">public</span> <span class="api-prop-type"><a href="#networkbehaviour">NetworkBehaviour[]</a></span> <span class="api-prop-name" id="networkidentity-behaviours">Behaviours</span></td>
 <td><span class="api-prop-getter">Get</span></td>
 <td>All the network behaviours attached to this identity.<br></td>
 </tr>
@@ -8586,27 +8586,27 @@
 </thead>
 <tbody>
 <tr>
-<td><span class="api-prop-modifiers">public</span> <span class="api-prop-type">PreExistingState[]</span> <span class="api-prop-name" id="networkpreexistinginfopacket-preexistingobjects">PreExistingObjects</span></td>
+<td><span class="api-prop-modifiers">public</span> <span class="api-prop-type"><a href="#preexistingstate">PreExistingState[]</a></span> <span class="api-prop-name" id="networkpreexistinginfopacket-preexistingobjects">PreExistingObjects</span></td>
 <td><span class="api-prop-getter">Get</span> <span class="api-prop-setter">Set</span></td>
 <td>The pre-existing objects in the network.<br></td>
 </tr>
 <tr>
-<td><span class="api-prop-modifiers">public</span> <span class="api-prop-type">NetworkId[]</span> <span class="api-prop-name" id="networkpreexistinginfopacket-removedobjects">RemovedObjects</span></td>
+<td><span class="api-prop-modifiers">public</span> <span class="api-prop-type"><a href="#networkid">NetworkId[]</a></span> <span class="api-prop-name" id="networkpreexistinginfopacket-removedobjects">RemovedObjects</span></td>
 <td><span class="api-prop-getter">Get</span> <span class="api-prop-setter">Set</span></td>
 <td>The id of the pre-existing objects that were removed from the network.<br></td>
 </tr>
 <tr>
-<td><span class="api-prop-modifiers">public</span> <span class="api-prop-type">string[]</span> <span class="api-prop-name" id="networkpreexistinginfopacket-scenenames">SceneNames</span></td>
+<td><span class="api-prop-modifiers">public</span> <span class="api-prop-type"><span class="api-internal-type">string[]</span></span> <span class="api-prop-name" id="networkpreexistinginfopacket-scenenames">SceneNames</span></td>
 <td><span class="api-prop-getter">Get</span> <span class="api-prop-setter">Set</span></td>
 <td>The names of the scenes that are loaded in the network.<br></td>
 </tr>
 <tr>
-<td><span class="api-prop-modifiers">public</span> <span class="api-prop-type">NetworkObjectSpawnPacket[]</span> <span class="api-prop-name" id="networkpreexistinginfopacket-spawnedobjects">SpawnedObjects</span></td>
+<td><span class="api-prop-modifiers">public</span> <span class="api-prop-type"><a href="#networkobjectspawnpacket">NetworkObjectSpawnPacket[]</a></span> <span class="api-prop-name" id="networkpreexistinginfopacket-spawnedobjects">SpawnedObjects</span></td>
 <td><span class="api-prop-getter">Get</span> <span class="api-prop-setter">Set</span></td>
 <td>The spawned objects in the network.<br></td>
 </tr>
 <tr>
-<td><span class="api-prop-modifiers">public</span> <span class="api-prop-type">NetworkBehaviourDataPacket[]</span> <span class="api-prop-name" id="networkpreexistinginfopacket-networkvalues">NetworkValues</span></td>
+<td><span class="api-prop-modifiers">public</span> <span class="api-prop-type"><a href="#networkbehaviourdatapacket">NetworkBehaviourDataPacket[]</a></span> <span class="api-prop-name" id="networkpreexistinginfopacket-networkvalues">NetworkValues</span></td>
 <td><span class="api-prop-getter">Get</span> <span class="api-prop-setter">Set</span></td>
 <td>The data of the network behaviours in the network.<br></td>
 </tr>
@@ -9932,7 +9932,7 @@
 </thead>
 <tbody>
 <tr>
-<td><span class="api-prop-modifiers">public</span> <span class="api-prop-type">float[]</span> <span class="api-prop-name" id="transformpacket-components">Components</span></td>
+<td><span class="api-prop-modifiers">public</span> <span class="api-prop-type"><span class="api-internal-type">float[]</span></span> <span class="api-prop-name" id="transformpacket-components">Components</span></td>
 <td><span class="api-prop-getter">Get</span> <span class="api-prop-setter">Set</span></td>
 <td>The components of the transform.<br></td>
 </tr>
