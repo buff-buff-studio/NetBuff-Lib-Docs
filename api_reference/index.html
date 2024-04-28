@@ -7167,11 +7167,6 @@
 <td>Sends a packet through the network, automatically choosing the correct method.<br>You can choose if the packet should be reliable or not.<br>Reliable packets are guaranteed to be delivered, but they are a little slower.<br>Non-reliable packets are faster, but they are not guaranteed to be delivered.<br></td>
 </tr>
 <tr>
-<td><span class="api-method-modifiers">public static</span> <span class="api-method-type"><a href="#packetlistenert">PacketListener<T></a><T></span> <span class="api-method-name" id="networkbehaviour-getpacketlistener">GetPacketListener</span></td>
-<td></td>
-<td>Gets the packet listener for the given packet type, so you can listen to packets of that type.<br>Does not work for IOwnedPacket types.<br></td>
-</tr>
-<tr>
 <td><br><span class="api-method-authority">Requires Authority</span><br><span class="api-method-modifiers">public</span> <span class="api-method-type"><a href="#networkactionttr">NetworkAction<NetworkId,NetworkIdentity></a>&lt;<a href="#networkid">NetworkId</a>,<a href="#networkidentity">NetworkIdentity</a>&gt;</span> <span class="api-method-name" id="networkbehaviour-despawn">Despawn</span></td>
 <td></td>
 <td>Despawns the object from the network.<br>Requires authority.<br></td>
@@ -7612,11 +7607,6 @@
 <td>Sends a packet through the network, automatically choosing the correct method.<br>You can choose if the packet should be reliable or not.<br>Reliable packets are guaranteed to be delivered, but they are a little slower.<br>Non-reliable packets are faster, but they are not guaranteed to be delivered.<br></td>
 </tr>
 <tr>
-<td><span class="api-method-modifiers">public static</span> <span class="api-method-type"><a href="#packetlistenert">PacketListener<T></a><T></span> <span class="api-method-name" id="networkidentity-getpacketlistener">GetPacketListener</span></td>
-<td></td>
-<td>Gets the packet listener for the given packet type, so you can listen to packets of that type.<br>Does not work for IOwnedPacket types.<br></td>
-</tr>
-<tr>
 <td><br><span class="api-method-authority">Requires Authority</span><br><span class="api-method-modifiers">public</span> <span class="api-method-type"><a href="#networkactionttr">NetworkAction<NetworkId,NetworkIdentity></a>&lt;<a href="#networkid">NetworkId</a>,<a href="#networkidentity">NetworkIdentity</a>&gt;</span> <span class="api-method-name" id="networkidentity-despawn">Despawn</span></td>
 <td></td>
 <td>Despawns the object from the network.<br>Requires authority.<br></td>
@@ -7968,16 +7958,6 @@
 <td><span class="api-method-modifiers">public</span> <span class="api-method-type">void</span> <span class="api-method-name" id="networkmanager-close">Close</span></td>
 <td></td>
 <td>Closes the network environment.<br></td>
-</tr>
-<tr>
-<td><span class="api-method-modifiers">public</span> <span class="api-method-type"><a href="#packetlistenert">PacketListener<T></a><T></span> <span class="api-method-name" id="networkmanager-getpacketlistener">GetPacketListener</span></td>
-<td></td>
-<td>Returns the packet listener for the given packet type.<br></td>
-</tr>
-<tr>
-<td><span class="api-method-modifiers">public</span> <span class="api-method-type"><a href="#packetlistener">PacketListener</a></span> <span class="api-method-name" id="networkmanager-getpacketlistener">GetPacketListener</span></td>
-<td><span class="api-method-param-type">Type</span> <span class="api-method-param-name">type</span></td>
-<td>Returns the packet listener for the given packet type.<br></td>
 </tr>
 <tr>
 <td><span class="api-method-modifiers">public</span> <span class="api-method-type"><a href="#networkidentity">NetworkIdentity</a></span> <span class="api-method-name" id="networkmanager-getnetworkobject">GetNetworkObject</span></td>
@@ -9292,12 +9272,22 @@
 </thead>
 <tbody>
 <tr>
-<td><span class="api-method-modifiers">public</span> <span class="api-method-type">void</span> <span class="api-method-name" id="packetlistener-callonserverreceive">CallOnServerReceive</span></td>
+<td><span class="api-method-modifiers">public static</span> <span class="api-method-type"><a href="#packetlistenert">PacketListener<T></a><T></span> <span class="api-method-name" id="packetlistener-getpacketlistener">GetPacketListener</span></td>
+<td></td>
+<td>Returns the packet listener for the given packet type.<br></td>
+</tr>
+<tr>
+<td><span class="api-method-modifiers">public static</span> <span class="api-method-type"><a href="#packetlistener">PacketListener</a></span> <span class="api-method-name" id="packetlistener-getpacketlistener">GetPacketListener</span></td>
+<td><span class="api-method-param-type">Type</span> <span class="api-method-param-name">type</span></td>
+<td>Returns the packet listener for the given packet type.<br></td>
+</tr>
+<tr>
+<td><span class="api-method-modifiers">public</span> <span class="api-method-type"><span class="api-internal-type">bool</span></span> <span class="api-method-name" id="packetlistener-callonserverreceive">CallOnServerReceive</span></td>
 <td><span class="api-method-param-type"><a href="#ipacket">IPacket</a></span> <span class="api-method-param-name">packet</span><br><span class="api-method-param-type"><span class="api-internal-type">int</span></span> <span class="api-method-param-name">client</span></td>
 <td>Call the OnServerReceive event.<br>Can be used to simulate a server receiving a packet.<br></td>
 </tr>
 <tr>
-<td><span class="api-method-modifiers">public</span> <span class="api-method-type">void</span> <span class="api-method-name" id="packetlistener-callonclientreceive">CallOnClientReceive</span></td>
+<td><span class="api-method-modifiers">public</span> <span class="api-method-type"><span class="api-internal-type">bool</span></span> <span class="api-method-name" id="packetlistener-callonclientreceive">CallOnClientReceive</span></td>
 <td><span class="api-method-param-type"><a href="#ipacket">IPacket</a></span> <span class="api-method-param-name">packet</span></td>
 <td>Call the OnClientReceive event.<br>Can be used to simulate a client receiving a packet.<br></td>
 </tr>
@@ -9325,12 +9315,32 @@
 </thead>
 <tbody>
 <tr>
-<td><span class="api-method-modifiers">public</span> <span class="api-method-type">void</span> <span class="api-method-name" id="packetlistenert-callonserverreceive">CallOnServerReceive</span><br><span class="api-method-override"><a href="#packetlistener-callonserverreceive">Overrides</a></span></td>
+<td><span class="api-method-modifiers">public</span> <span class="api-method-type">void</span> <span class="api-method-name" id="packetlistenert-addserverlistener">AddServerListener</span></td>
+<td><span class="api-method-param-type">Func<T,int,bool><T,\<span class="api-internal-type">int\</span>,\<span class="api-internal-type">bool\</span>></span> <span class="api-method-param-name">callback</span></td>
+<td></td>
+</tr>
+<tr>
+<td><span class="api-method-modifiers">public</span> <span class="api-method-type">void</span> <span class="api-method-name" id="packetlistenert-addclientlistener">AddClientListener</span></td>
+<td><span class="api-method-param-type">Func<T,bool><T,\<span class="api-internal-type">bool\</span>></span> <span class="api-method-param-name">callback</span></td>
+<td></td>
+</tr>
+<tr>
+<td><span class="api-method-modifiers">public</span> <span class="api-method-type">void</span> <span class="api-method-name" id="packetlistenert-removeserverlistener">RemoveServerListener</span></td>
+<td><span class="api-method-param-type">Func<T,int,bool><T,\<span class="api-internal-type">int\</span>,\<span class="api-internal-type">bool\</span>></span> <span class="api-method-param-name">callback</span></td>
+<td></td>
+</tr>
+<tr>
+<td><span class="api-method-modifiers">public</span> <span class="api-method-type">void</span> <span class="api-method-name" id="packetlistenert-removeclientlistener">RemoveClientListener</span></td>
+<td><span class="api-method-param-type">Func<T,bool><T,\<span class="api-internal-type">bool\</span>></span> <span class="api-method-param-name">callback</span></td>
+<td></td>
+</tr>
+<tr>
+<td><span class="api-method-modifiers">public</span> <span class="api-method-type"><span class="api-internal-type">bool</span></span> <span class="api-method-name" id="packetlistenert-callonserverreceive">CallOnServerReceive</span><br><span class="api-method-override"><a href="#packetlistener-callonserverreceive">Overrides</a></span></td>
 <td><span class="api-method-param-type"><a href="#ipacket">IPacket</a></span> <span class="api-method-param-name">packet</span><br><span class="api-method-param-type"><span class="api-internal-type">int</span></span> <span class="api-method-param-name">client</span></td>
 <td>Call the OnServerReceive event.<br>Can be used to simulate a server receiving a packet.<br></td>
 </tr>
 <tr>
-<td><span class="api-method-modifiers">public</span> <span class="api-method-type">void</span> <span class="api-method-name" id="packetlistenert-callonclientreceive">CallOnClientReceive</span><br><span class="api-method-override"><a href="#packetlistener-callonclientreceive">Overrides</a></span></td>
+<td><span class="api-method-modifiers">public</span> <span class="api-method-type"><span class="api-internal-type">bool</span></span> <span class="api-method-name" id="packetlistenert-callonclientreceive">CallOnClientReceive</span><br><span class="api-method-override"><a href="#packetlistener-callonclientreceive">Overrides</a></span></td>
 <td><span class="api-method-param-type"><a href="#ipacket">IPacket</a></span> <span class="api-method-param-name">packet</span></td>
 <td>Call the OnClientReceive event.<br>Can be used to simulate a client receiving a packet.<br></td>
 </tr>

@@ -1016,7 +1016,8 @@
 <span class="normal">39</span>
 <span class="normal">40</span>
 <span class="normal">41</span>
-<span class="normal">42</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-6-1"><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">Lever</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">NetworkBehaviour</span>
+<span class="normal">42</span>
+<span class="normal">43</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-6-1"><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">Lever</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">NetworkBehaviour</span>
 </span><span id="__span-6-2"><span class="p">{</span>
 </span><span id="__span-6-3"><span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="n">BoolNetworkValue</span><span class="w"> </span><span class="n">isOn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="p">(</span><span class="k">false</span><span class="p">);</span>
 </span><span id="__span-6-4"><span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">radius</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2f</span><span class="p">;</span>
@@ -1024,40 +1025,41 @@
 </span><span id="__span-6-6"><span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">OnEnable</span><span class="p">()</span>
 </span><span id="__span-6-7"><span class="w">    </span><span class="p">{</span>
 </span><span id="__span-6-8"><span class="w">        </span><span class="n">WithValues</span><span class="p">(</span><span class="n">isOn</span><span class="p">);</span>
-</span><span id="__span-6-9"><span class="w">        </span><span class="n">GetPacketListener</span><span class="o">&lt;</span><span class="n">PlayerPunchActionPacket</span><span class="o">&gt;</span><span class="p">().</span><span class="n">OnServerReceive</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">OnPlayerPunch</span><span class="p">;</span>
+</span><span id="__span-6-9"><span class="w">        </span><span class="n">PacketListener</span><span class="p">.</span><span class="n">GetPacketListener</span><span class="o">&lt;</span><span class="n">PlayerPunchActionPacket</span><span class="o">&gt;</span><span class="p">().</span><span class="n">AddServerListener</span><span class="p">(</span><span class="n">OnPlayerPunch</span><span class="p">);</span>
 </span><span id="__span-6-10"><span class="w">        </span><span class="c1">//GetPacketListener&lt;PlayerPunchActionPacket&gt;().OnClientReceive ...;</span>
 </span><span id="__span-6-11"><span class="w">    </span><span class="p">}</span>
 </span><span id="__span-6-12">
 </span><span id="__span-6-13"><span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">OnDisable</span><span class="p">()</span>
 </span><span id="__span-6-14"><span class="w">    </span><span class="p">{</span>
-</span><span id="__span-6-15"><span class="w">        </span><span class="n">GetPacketListener</span><span class="o">&lt;</span><span class="n">PlayerPunchActionPacket</span><span class="o">&gt;</span><span class="p">().</span><span class="n">OnServerReceive</span><span class="w"> </span><span class="o">-=</span><span class="w"> </span><span class="n">OnPlayerPunch</span><span class="p">;</span>
+</span><span id="__span-6-15"><span class="w">        </span><span class="n">PacketListener</span><span class="p">.</span><span class="n">GetPacketListener</span><span class="o">&lt;</span><span class="n">PlayerPunchActionPacket</span><span class="o">&gt;</span><span class="p">().</span><span class="n">RemoveServerListener</span><span class="p">(</span><span class="n">OnPlayerPunch</span><span class="p">);</span>
 </span><span id="__span-6-16"><span class="w">    </span><span class="p">}</span>
 </span><span id="__span-6-17">
-</span><span id="__span-6-18"><span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">OnPlayerPunch</span><span class="p">(</span><span class="n">PlayerPunchActionPacket</span><span class="w"> </span><span class="n">obj</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">client</span><span class="p">)</span>
+</span><span id="__span-6-18"><span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="nf">OnPlayerPunch</span><span class="p">(</span><span class="n">PlayerPunchActionPacket</span><span class="w"> </span><span class="n">obj</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">client</span><span class="p">)</span>
 </span><span id="__span-6-19"><span class="w">    </span><span class="p">{</span>
 </span><span id="__span-6-20"><span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">o</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GetNetworkObject</span><span class="p">(</span><span class="n">obj</span><span class="p">.</span><span class="n">Id</span><span class="p">);</span>
 </span><span id="__span-6-21"><span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">dist</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Vector3</span><span class="p">.</span><span class="n">Distance</span><span class="p">(</span><span class="n">o</span><span class="p">.</span><span class="n">transform</span><span class="p">.</span><span class="n">position</span><span class="p">,</span><span class="w"> </span><span class="n">transform</span><span class="p">.</span><span class="n">position</span><span class="p">);</span>
 </span><span id="__span-6-22">
 </span><span id="__span-6-23"><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">dist</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">radius</span><span class="p">)</span>
-</span><span id="__span-6-24"><span class="w">            </span><span class="k">return</span><span class="p">;</span>
+</span><span id="__span-6-24"><span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="k">true</span><span class="p">;</span><span class="w"> </span><span class="c1">//Consume packet</span>
 </span><span id="__span-6-25">
 </span><span id="__span-6-26"><span class="w">        </span><span class="n">isOn</span><span class="p">.</span><span class="n">Value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">!</span><span class="n">isOn</span><span class="p">.</span><span class="n">Value</span><span class="p">;</span>
-</span><span id="__span-6-27"><span class="w">    </span><span class="p">}</span>
-</span><span id="__span-6-28"><span class="p">}</span>
-</span><span id="__span-6-29">
-</span><span id="__span-6-30"><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">PlayerController</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">NetworkBehaviour</span>
-</span><span id="__span-6-31"><span class="p">{</span>
-</span><span id="__span-6-32"><span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">Update</span><span class="p">()</span>
-</span><span id="__span-6-33"><span class="w">    </span><span class="p">{</span>
-</span><span id="__span-6-34"><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">HasAuthority</span><span class="p">)</span>
-</span><span id="__span-6-35"><span class="w">            </span><span class="k">return</span><span class="p">;</span>
-</span><span id="__span-6-36">
-</span><span id="__span-6-37"><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">Input</span><span class="p">.</span><span class="n">GetKeyDown</span><span class="p">(</span><span class="n">KeyCode</span><span class="p">.</span><span class="n">Q</span><span class="p">))</span>
-</span><span id="__span-6-38"><span class="w">        </span><span class="p">{</span>
-</span><span id="__span-6-39"><span class="w">            </span><span class="n">SendPacket</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">PlayerPunchActionPacket</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">Id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Id</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="k">true</span><span class="p">);</span>
-</span><span id="__span-6-40"><span class="w">        </span><span class="p">}</span>
-</span><span id="__span-6-41"><span class="w">    </span><span class="p">}</span>
-</span><span id="__span-6-42"><span class="p">}</span>
+</span><span id="__span-6-27"><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="k">false</span><span class="p">;</span>
+</span><span id="__span-6-28"><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-6-29"><span class="p">}</span>
+</span><span id="__span-6-30">
+</span><span id="__span-6-31"><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">PlayerController</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">NetworkBehaviour</span>
+</span><span id="__span-6-32"><span class="p">{</span>
+</span><span id="__span-6-33"><span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">Update</span><span class="p">()</span>
+</span><span id="__span-6-34"><span class="w">    </span><span class="p">{</span>
+</span><span id="__span-6-35"><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">HasAuthority</span><span class="p">)</span>
+</span><span id="__span-6-36"><span class="w">            </span><span class="k">return</span><span class="p">;</span>
+</span><span id="__span-6-37">
+</span><span id="__span-6-38"><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">Input</span><span class="p">.</span><span class="n">GetKeyDown</span><span class="p">(</span><span class="n">KeyCode</span><span class="p">.</span><span class="n">Q</span><span class="p">))</span>
+</span><span id="__span-6-39"><span class="w">        </span><span class="p">{</span>
+</span><span id="__span-6-40"><span class="w">            </span><span class="n">SendPacket</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">PlayerPunchActionPacket</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">Id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Id</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="k">true</span><span class="p">);</span>
+</span><span id="__span-6-41"><span class="w">        </span><span class="p">}</span>
+</span><span id="__span-6-42"><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-6-43"><span class="p">}</span>
 </span></code></pre></div></td></tr></table></div>
 <h3 id="packet-reliability">Packet Reliability</h3>
 <p>When you use any of the packet sending methods, you can set the reliability argument. When set to true, the delivery method is reliable, supporting larger packets at the cost of being slightly slower. When set to false, there's no reliability, packets are limited to small sizes, but delivery is extremely fast!</p>
